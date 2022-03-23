@@ -1,23 +1,34 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import './App.css';
+import Map from './Map';
+import React from 'react';
 
-function App() {
-  const position = [51.505, -0.09];
 
-  return(
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
-  );
+
+class App extends React.Component {
+  state = { markerPosition: { lat: 44.9379, lng: -93.1691 } };
+  moveMarker = () => {
+    const { lat, lng } = this.state.markerPosition;
+    this.setState({
+      markerPosition: {
+        lat: lat + 0.0001,
+        lng: lng + 0.0001, 
+      }
+    });
+  };
+  render() {
+    const { markerPosition } = this.state;
+    return (
+      <div>
+        <Map markerPosition={markerPosition} />
+        <div>Current markerPosition: lat: {markerPosition.lat}, lng: {markerPosition.lng}</div>
+        <button
+          onClick={this.moveMarker}
+        >
+          Move marker
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
