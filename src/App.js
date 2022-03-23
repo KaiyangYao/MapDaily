@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Map from './Map';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+
+class App extends React.Component {
+  state = { markerPosition: { lat: 44.9379, lng: -93.1691 } };
+  moveMarker = () => {
+    const { lat, lng } = this.state.markerPosition;
+    this.setState({
+      markerPosition: {
+        lat: lat + 0.0001,
+        lng: lng + 0.0001, 
+      }
+    });
+  };
+  render() {
+    const { markerPosition } = this.state;
+    return (
+      <div>
+        <Map markerPosition={markerPosition} />
+        <div>Current markerPosition: lat: {markerPosition.lat}, lng: {markerPosition.lng}</div>
+        <button
+          onClick={this.moveMarker}
         >
-          Learn React(Test)
-        </a>
-      </header>
-    </div>
-  );
+          Move marker
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
