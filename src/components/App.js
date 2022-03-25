@@ -1,3 +1,4 @@
+// This component class is a draft to play around, does nothing effectively.
 import './App.css';
 import Map from './Map';
 import React from 'react';
@@ -15,6 +16,7 @@ class App extends React.Component {
       }
     });
   };
+  
   render() {
     const { markerPosition } = this.state;
     return (

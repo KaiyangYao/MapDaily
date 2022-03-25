@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App';
+import Dashboard from './components/Dashboard';
 
 
-render(<App />, document.getElementById('root'));
+render(<Dashboard />, document.getElementById('root'));
