@@ -10,12 +10,12 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems.js';
 import Map from './Map';
+import logo from '../resource/images/logo_white.svg';
+
 
 // import SimpleLineChart from './SimpleLineChart';
 // import SimpleTable from './SimpleTable';
@@ -37,6 +37,7 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
+    background : '#01426a',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -147,20 +148,14 @@ class Dashboard extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
+
+            <img src={logo} style = {{heigh : 170, width:150}} alt="logo" className={classes.logo} />
+            
+            {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
         </AppBar>
         <Drawer
