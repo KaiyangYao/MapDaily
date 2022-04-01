@@ -3,6 +3,9 @@ import L from "leaflet";
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import buildings from "../resource/geojson.js/buildings";
+
+
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -17,7 +20,6 @@ const style = {
 };
 
 class Map extends React.Component {
-
   componentDidMount() {
     // create map
     this.map = L.map("map", {
@@ -31,16 +33,18 @@ class Map extends React.Component {
             accessToken: 'pk.eyJ1IjoiZXJpY2xpMTIzMzIiLCJhIjoiY2wxMnU2dXJrMzd3dTNpcGtva2xkOW52eCJ9.QHypxQDAlVZnHPD5oVDyNg' })
       ]
     });
-
-    // add marker
-    
-    this.marker = L.marker(this.props.markerPosition).addTo(this.map);
+    L.geoJSON(buildings).addTo(this.map);
   }
-  componentDidUpdate({ markerPosition }) {
+  componentDidUpdate({markerPosition}) {
     // check if position has changed
-    if (this.props.markerPosition !== markerPosition) {
-      this.marker.setLatLng(this.props.markerPosition);
+    if(this.props.diningclicked && this.marker==undefined){
+      this.marker = L.marker(this.props.markerPosition).addTo(this.map).on('click',function(){console.log("Hello")});
     }
+    else if(!this.props.diningclicked && this.marker != undefined){
+      this.map.removeLayer(this.marker);
+      this.marker = undefined;
+    }
+    console.log(this.marker)
   }
   render() {
     return <div id="map" style={style} />;

@@ -12,7 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems } from './ListItems.js';
+import ListItems from './ListItems.js';
 import Map from './Map';
 import logo from '../resource/images/logo_white.svg';
 
@@ -103,18 +103,13 @@ const styles = theme => ({
 class Dashboard extends React.Component {
   state = {
     open: true,
-    markerPosition: { lat: 44.9379, lng: -93.1691 }
+    markerPosition: { lat: 44.9379, lng: -93.1691 },
+    diningclicked : false
   };
 
-  moveMarker = () => {
-    const { lat, lng } = this.state.markerPosition;
-    this.setState({
-      markerPosition: {
-        lat: lat + 0.0001,
-        lng: lng + 0.0001, 
-      }
-    });
-  };
+  setdiningclicked = ()=>{
+    this.setState({diningclicked : !this.state.diningclicked});
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -127,7 +122,8 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
     const markerPosition = this.state.markerPosition;
-
+    const diningclicked = this.state.diningclicked;
+    console.log(diningclicked);
 
     return (
       <div className={classes.root}>
@@ -170,26 +166,23 @@ class Dashboard extends React.Component {
               <ChevronLeftIcon />
             </IconButton>
           </div>
-          <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
+          <ListItems setdiningclicked = {this.setdiningclicked} />
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
+          {/* <Typography variant="h4" gutterBottom component="h2">
             Map
-          </Typography>
+          </Typography> */}
           <Typography component="div" className={classes.chartContainer}>
-            <Map markerPosition={markerPosition}  />
+            <Map markerPosition={markerPosition} diningclicked = {diningclicked} />
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
           </Typography>
           <div className={classes.tableContainer}>
-          <button
+          {/* <button
           onClick={this.moveMarker}>
           Move marker
-          </button>
+          </button> */}
           </div>
         </main>
       </div>

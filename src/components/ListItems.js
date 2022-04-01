@@ -5,14 +5,28 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
 
-export const mainListItems = (
-  <div>
-    <ListItem button>
+
+
+function ListItems(props){
+
+// function handleOnClick(){
+    
+//     console.log(props.setdiningclicked());
+//   }
+
+return ( 
+<div>
+<List>
+ <div>
+    <ListItem button onClick ={() => {props.setdiningclicked()}} >
       <ListItemIcon>
-        <DashboardIcon />
+        <LocalDiningIcon />
       </ListItemIcon>
-      <ListItemText primary="Feature1" />
+      <ListItemText primary="Restuarant" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -38,11 +52,11 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Feature5" />
     </ListItem>
-  </div>
-);
-
-export const secondaryListItems = (
-  <div>
+  </div>  
+</List>
+ <Divider />
+<List>
+    <div>
     <ListSubheader inset></ListSubheader>
     <ListItem button>
       <ListItemIcon>
@@ -62,5 +76,9 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Info3" />
     </ListItem>
-  </div>
-);
+    </div>
+    </List>
+    </div>)
+}
+
+export default ListItems;
