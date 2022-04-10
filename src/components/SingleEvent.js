@@ -1,29 +1,19 @@
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
-function SingleEvent( props ) {
+function SingleEvent(props) {
   var event = props.event;
   // console.log("!!!" + event);
   return (
     <div>
-      <Card border="info" style={{ width: "18rem" }}>
+      {/* 18 */}
+      <Card border="info" style={{ width: "15rem" }} className="mb-3">  
         <Card.Body>
-          <Card.Title>{event.location}</Card.Title>
+          <Card.Title>{event.summary}</Card.Title>
           <Card.Subtitle className="mt-2 text-muted">
             {event.date}
           </Card.Subtitle>
-          <Card.Text>
-            {event.summary}
-          </Card.Text>
+          <Card.Text>{event.location}</Card.Text>
           <Card.Link href={event.url}>Event Link</Card.Link>
         </Card.Body>
       </Card>

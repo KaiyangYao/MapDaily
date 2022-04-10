@@ -1,4 +1,4 @@
-import { events } from "./event";
+import { events } from "../resource/event";
 
 const ICAL = require("ical.js");
 
@@ -9,14 +9,12 @@ var allVevents = comp.getAllSubcomponents("vevent");
 var summaryList = [];
 
 for (var event of allVevents) {
-  //   console.log(event);
+  // console.log(event);
   var summary = event.getFirstPropertyValue("summary");
   var date = event.getFirstPropertyValue("dtstart"); // ICAL.Date object
   var JSDate = date.toJSDate();
-
   var location = event.getFirstPropertyValue("location");
-  location = location === "" ? "N/A" : location;
-  
+  location = location === "" ? "Remote" : location;
   var url = event.getFirstPropertyValue("url");
 
   if (date.month === 4 && date.day === 7) {
@@ -40,6 +38,6 @@ for (var event of allVevents) {
   }
 }
 
-console.log(summaryList);
+// console.log(summaryList);
 
 export let s = summaryList;

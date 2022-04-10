@@ -3,7 +3,7 @@ import L from "leaflet";
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import buildings from "../resource/geojson.js/buildings";
+import buildings from "../resource/json/buildings";
 
 
 
@@ -35,6 +35,7 @@ class Map extends React.Component {
     });
     L.geoJSON(buildings).addTo(this.map);
   }
+
   componentDidUpdate({markerPosition}) {
     // check if position has changed
     if(this.props.diningclicked && this.marker==undefined){

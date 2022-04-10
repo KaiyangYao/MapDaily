@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import Dashboard from "./components/Dashboard";
 import Main from "./components/Main";
-import Calendar from "./components/Calendar";
+import Date2 from "./components/Date2";
 
 render(<Main />, document.getElementById("root"));
