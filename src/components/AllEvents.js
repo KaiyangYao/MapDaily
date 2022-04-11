@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SingleEvent from "./SingleEvent";
 import { s } from "../utils/Calendar";
@@ -15,30 +14,28 @@ class AllEvents extends Component {
   }
 
   render() {
-    let eventCards = this.state.events.map((e) => {
+    var targetDate = this.props.date;
+
+    var eventsToday = this.state.events.filter((e) => {
+      var date = new Date(e.date);
       return (
-        // <Col sm="4" className="pb-3">
-        //   <SingleEvent event={e} />
-        // </Col>
-        <SingleEvent event={e} />
+        date.getUTCMonth() + 1 === targetDate.getUTCMonth() + 1 &&
+        date.getUTCDate() === targetDate.getUTCDate()
       );
+    });
+
+    let eventCards = eventsToday.map((e) => {
+      return <SingleEvent event={e} />;
     });
 
     const breakpoints = {
       // reduce to n column when the width < x pixels
       default: 3,
       1400: 2,
-      1000: 1
-    }
+      1000: 1,
+    };
 
     return (
-      // <Container className="mt-5" >
-      //   <Row md={2}>
-      //     {/* <Col></Col> */}
-      //     {/* <Col>{eventCards}</Col> */}
-      //     {eventCards}
-      //   </Row>
-      // </Container>
       <Masonry
         breakpointCols={breakpoints}
         className="my-masonry-grid"

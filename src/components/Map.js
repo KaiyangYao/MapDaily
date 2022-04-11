@@ -47,6 +47,7 @@ class Map extends React.Component {
     }
     console.log(this.marker)
   }
+  
   render() {
     return <div id="map" style={style} />;
   }

@@ -17,27 +17,12 @@ for (var event of allVevents) {
   location = location === "" ? "Remote" : location;
   var url = event.getFirstPropertyValue("url");
 
-  if (date.month === 4 && date.day === 7) {
-    // summaryList.push(summary);
-    summaryList.push({
-      summary: summary,
-      date: JSDate.toDateString(),
-      location: location,
-      url: url,
-    });
-
-    // summaryList.summary = summary;
-    // summaryList.date = JSDate.toDateString();
-    // summaryList.location = location;
-    // summaryList.url = url;
-    // console.log(summary);
-    // console.log(JSDate.toDateString());
-    // console.log(location);
-    // console.log(url);
-    // console.log("");
-  }
+  summaryList.push({
+    summary: summary,
+    date: JSDate.toDateString(),
+    location: location,
+    url: url,
+  });
 }
-
-// console.log(summaryList);
 
 export let s = summaryList;
