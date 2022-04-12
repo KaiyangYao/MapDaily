@@ -144,14 +144,7 @@ class Dashboard extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-
             <img src={logo} style = {{heigh : 170, width:150}} alt="logo" className={classes.logo} />
-            
-            {/* <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -168,22 +161,18 @@ class Dashboard extends React.Component {
           </div>
           <ListItems setdiningclicked = {this.setdiningclicked} />
         </Drawer>
+        
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          {/* <Typography variant="h4" gutterBottom component="h2">
-            Map
-          </Typography> */}
-          <Typography component="div" className={classes.chartContainer}>
+        <Typography component="div" className={classes.chartContainer}>
+
             <Map markerPosition={markerPosition} diningclicked = {diningclicked} />
-          </Typography>
-          <Typography variant="h4" gutterBottom component="h2">
-          </Typography>
-          <div className={classes.tableContainer}>
-          {/* <button
-          onClick={this.moveMarker}>
-          Move marker
-          </button> */}
-          </div>
+          
+        </Typography>
+
+        <div className={classes.tableContainer}>
+
+        </div>
         </main>
       </div>
     );

@@ -15,8 +15,8 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const style = {
-  width: "90%",
-  height: "600px"
+  width: "100%",
+  height: "800px"
 };
 
 class Map extends React.Component {
