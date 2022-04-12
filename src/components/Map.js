@@ -38,16 +38,16 @@ class Map extends React.Component {
 
   componentDidUpdate({markerPosition}) {
     // check if position has changed
-    if(this.props.diningclicked && this.marker==undefined){
+    if(this.props.diningclicked && this.marker === undefined){
       this.marker = L.marker(this.props.markerPosition).addTo(this.map).on('click',function(){console.log("Hello")});
     }
-    else if(!this.props.diningclicked && this.marker != undefined){
+    else if(!this.props.diningclicked && this.marker !== undefined){
       this.map.removeLayer(this.marker);
       this.marker = undefined;
     }
     console.log(this.marker)
   }
-  
+
   render() {
     return <div id="map" style={style} />;
   }
