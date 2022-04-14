@@ -3,7 +3,7 @@ import L from "leaflet";
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import buildings from "../resource/json/building";
+import buildings from "../../resource/json/building";
 import { connect } from 'react-redux'
 
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SingleEvent from "./SingleEvent";
-import { s } from "../utils/Calendar";
-import "../css/AllEvents.css";
+import { s } from "./utils/Calendar";
+import "../../css/AllEvents.css"
 import Masonry from "react-masonry-css";
 
 class AllEvents extends Component {

@@ -1,4 +1,4 @@
-import { events } from "../resource/event";
+import { events } from "../../../resource/event";
 
 const ICAL = require("ical.js");
 

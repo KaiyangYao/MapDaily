@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-import "../css/Date.css";
+import "../../css/Date.css";
 
 function DateSelector(props) {
   const [eventDate, setEventDate] = useState(null);

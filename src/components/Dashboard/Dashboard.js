@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItems from './ListItems.js';
 import Map from './Map';
-import logo from '../resource/images/logo_white.svg';
+import logo from '../../resource/images/logo_white.svg';
 
 
 // import SimpleLineChart from './SimpleLineChart';
