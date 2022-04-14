@@ -12,7 +12,7 @@ class AllEvents extends Component {
       events: s,
     };
   }
-
+  
   render() {
     var targetDate = this.props.date;
 

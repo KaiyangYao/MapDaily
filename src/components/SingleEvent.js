@@ -1,11 +1,19 @@
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Stack} from "@mui/material";
+import {useDispatch} from 'react-redux';
+import {changeBuildings} from "../features/buildingsSlice"
 
 
 
 function SingleEvent(props) {
   var event = props.event;
+  const dispatch = useDispatch();
+
+  const handleOnClick = () =>{
+    dispatch(changeBuildings(0));
+  }
+
   return (
     <div>
       {/* 18 */}
@@ -17,10 +25,10 @@ function SingleEvent(props) {
           </Card.Subtitle>
           <Card.Text>{event.location}</Card.Text>
 
-          <Stack direction="row" spacing={3}   justifyContent="space-between">
+          <Stack direction="row" spacing={2}   justifyContent="space-between">
 
           <Card.Link href={event.url}>Event Link</Card.Link>
-          <Button variant="primary" size = 'sm'>Show On Map</Button>
+          <Button variant="primary" size = 'sm' onClick = {handleOnClick }>Show On Map </Button>
 
           </Stack>
         </Card.Body>

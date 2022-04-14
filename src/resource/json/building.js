@@ -1,4 +1,5 @@
-{
+
+var buildings = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -9,7 +10,8 @@
         "stroke-opacity": 1,
         "fill": "#e31616",
         "fill-opacity": 0.5,
-        "building": "Olin Rice"
+        "building": "Olin Rice",
+        "show_on_map": false,
       },
       "geometry": {
         "type": "Polygon",
@@ -79,7 +81,8 @@
         "stroke-opacity": 1,
         "fill": "#cc24a7",
         "fill-opacity": 0.5,
-        "building": "Humanity"
+        "building": "Humanity",
+        "show_on_map" : false,
       },
       "geometry": {
         "type": "Polygon",
@@ -117,7 +120,8 @@
         "stroke-opacity": 1,
         "fill": "#5f8fde",
         "fill-opacity": 0.5,
-        "building": "Janet Wallace Fine Arts Center "
+        "building": "Janet Wallace Fine Arts Center ",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -372,7 +376,8 @@
         "stroke-opacity": 1,
         "fill": "#555555",
         "fill-opacity": 0.5,
-        "building": "Old Main"
+        "building": "Old Main",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -426,7 +431,8 @@
         "stroke-opacity": 1,
         "fill": "#44eeeb",
         "fill-opacity": 0.5,
-        "building": "Carnegie Hall"
+        "building": "Carnegie Hall",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -464,7 +470,8 @@
         "stroke-opacity": 1,
         "fill": "#2309e1",
         "fill-opacity": 0.5,
-        "building ": "library"
+        "building ": "library",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -626,7 +633,8 @@
         "stroke-opacity": 1,
         "fill": "#e28112",
         "fill-opacity": 0.5,
-        "building": "Campus Center"
+        "building": "Campus Center",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -828,7 +836,8 @@
         "stroke-opacity": 1,
         "fill": "#13cd16",
         "fill-opacity": 0.5,
-        "building": "Weyerhauser Hall"
+        "building": "Weyerhauser Hall",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -970,7 +979,8 @@
         "stroke-opacity": 1,
         "fill": "#1f11e4",
         "fill-opacity": 0.5,
-        "building": "Mac Stadium"
+        "building": "Mac Stadium",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -1058,3 +1068,5 @@
     }
   ]
 }
+
+export default buildings;
