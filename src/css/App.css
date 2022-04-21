@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.col_pd {
+  padding-top: 7em;
+}
+
+.tabpicker {
+  text-align: center;
+}

@@ -1,41 +1,35 @@
 import { Container, Row, Col } from "react-bootstrap";
-import {Outlet, Route, Routes} from 'react-router-dom';
+import { Outlet, Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/Main.css";
+import "../css/App.css";
 import TabPicker from "./TabPicker";
 import Test from "./Test";
 
-
-function App(props){
-  return(
+function App(props) {
+  return (
     <Routes>
-      <Route element={<Main/>}> 
-      <Route path='/events' element={
-          <TabPicker />
-        }/>
-      <Route path='/Test' element={
-          <Test />
-        }/>
+      <Route element={<Main />}>
+        <Route path="/events" element={<TabPicker className="tabpicker"/>} />
+        <Route path="/Test" element={<Test />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
 function Main(props) {
-
-    return (
-      <Container fluid>
-        <Row className="mt-4">
-          <Col>
-            <Dashboard />
-          </Col>
-          <Col>
-              <Outlet/>
-          </Col>
-        </Row>
-      </Container>
-    );
+  return (
+    <Container fluid>
+      <Row>
+        <Col>
+          <Dashboard />
+        </Col>
+        <Col className="col_pd">
+          <Outlet />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default App;

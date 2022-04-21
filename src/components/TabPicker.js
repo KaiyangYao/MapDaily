@@ -46,7 +46,7 @@ function TabPicker(props) {
 
     const TabPanel = styled(TabPanelUnstyled)`
         width: 100%;
-        font: normal normal bold 17px/18px Roboto;
+        // font: normal normal bold 17px/18px Roboto;
     `;
 
     const TabsList = styled(TabsListUnstyled)`
@@ -61,7 +61,7 @@ function TabPicker(props) {
     `;
 
     return (
-        <TabsUnstyled defaultValue={0}>
+        <TabsUnstyled defaultValue={0} align="center">
             <TabsList sx={{ width: '66%' }}>
                 <Tab>Events</Tab>
                 <Tab>Buildings</Tab>
