@@ -63,7 +63,6 @@ class Map extends React.Component {
           return feature.properties.show_on_map;
       },
     }).addTo(this.map);
-    console.log("show_on_map " + this.state.buildings.features[0].properties.show_on_map);
   }
 
   componentDidUpdate(prevProps, prevState) {

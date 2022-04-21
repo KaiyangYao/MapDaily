@@ -2,8 +2,7 @@ import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Stack} from "@mui/material";
 import {useDispatch} from 'react-redux';
-import {changeBuildings} from "../../features/buildingsSlice"
-
+import {changeBuildings} from "../../features/buildingsSlice";
 
 
 function SingleEvent(props) {
@@ -27,7 +26,7 @@ function SingleEvent(props) {
 
           <Stack direction="row" spacing={2}   justifyContent="space-between">
 
-          <Card.Link href={event.url}>Event Link</Card.Link>
+          <a href= {event.url} class="card-link" target = "_blank">Card link</a>
           <Button variant="primary" size = 'sm' onClick = {handleOnClick }>Show On Map </Button>
 
           </Stack>

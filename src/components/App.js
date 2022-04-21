@@ -3,7 +3,7 @@ import {Outlet, Route, Routes} from 'react-router-dom';
 import Dashboard from "./Dashboard/Dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Main.css";
-import  EventGallery from "./Events/EventGallery";
+import TabPicker from "./TabPicker";
 import Test from "./Test";
 
 
@@ -12,7 +12,7 @@ function App(props){
     <Routes>
       <Route element={<Main/>}> 
       <Route path='/events' element={
-          <EventGallery />
+          <TabPicker />
         }/>
       <Route path='/Test' element={
           <Test />
