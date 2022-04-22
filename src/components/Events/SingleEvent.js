@@ -30,13 +30,7 @@ function SingleEvent(props) {
           index = i;
         }
       } else {
-        console.log("bu", buildings[i]);
-        console.log("loc", location);
         if (location.includes(buildings[i])) {
-          console.log("!!!");
-          console.log(location);
-          
-          console.log(buildings[i]);
           index = i;
         }
       }
@@ -48,6 +42,9 @@ function SingleEvent(props) {
       if (location.includes("chapel")) {
         index = 10;
       }
+    }
+    if (location.includes("music")) {
+      index = 2
     }
     dispatch(changeBuildings(index));
   };
