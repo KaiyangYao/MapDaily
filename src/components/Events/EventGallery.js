@@ -12,7 +12,6 @@ class EventGallery extends Component{
 
     render(){
         const changeDateHandler = (event) => {
-            console.log(event);
             this.setState({
               date: new Date(event),
             });
