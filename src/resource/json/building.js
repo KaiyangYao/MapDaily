@@ -266,7 +266,9 @@ var buildings = {
         "stroke-width": 2,
         "stroke-opacity": 1,
         "fill": "#e1d019",
-        "fill-opacity": 0.5
+        "fill-opacity": 0.5,
+        "building": "Leonard Center ",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",

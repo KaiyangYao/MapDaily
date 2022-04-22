@@ -8,9 +8,33 @@ import {changeBuildings} from "../../features/buildingsSlice";
 function SingleEvent(props) {
   var event = props.event;
   const dispatch = useDispatch();
-
+  var buildings =list["olin rice", "humanity", "janet wallace fine art center", "leonard center",
+"old main", "carnegie", "library", "campus center", "weyerhauser hall", "mac stadium", 
+"weyerhauser chapel", "kagin"]
   const handleOnClick = () =>{
-    dispatch(changeBuildings(0));
+    var location = event.location
+    var index = 0
+    for (let i = 0; i < buildings.length; i++){
+      if (buildings[i].length > location.length){
+        if (buildings[i].toLowercase().includes(location)){
+          index = i
+        }
+      }
+      else{
+        if (location.includes(buildings[i].toLowercase())){
+          index = i
+        }
+      }
+    }
+    if (location.includes("weyerhauser")){
+      if (location.includes("hall")){
+        index = 8
+      }
+      if (location.includes("chapel")){
+        index = 10
+      }
+    }
+    dispatch(changeBuildings(index));
   }
 
   return (
