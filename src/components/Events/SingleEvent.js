@@ -23,7 +23,7 @@ function SingleEvent(props) {
   ];
   const handleOnClick = () => {
     var location = event.location.toLowerCase();
-    var index = 0;
+    var index = 3;
     for (let i = 0; i < buildings.length; i++) {
       if (buildings[i].length > location.length) {
         if (buildings[i].includes(location.toLowerCase())) {
@@ -44,7 +44,7 @@ function SingleEvent(props) {
       }
     }
     if (location.includes("music")) {
-      index = 2
+      index = 2;
     }
     dispatch(changeBuildings(index));
   };
@@ -62,11 +62,18 @@ function SingleEvent(props) {
 
           <Stack direction="row" spacing={2} justifyContent="space-between">
             <a href={event.url} class="card-link" target="_blank">
-              Card link
+              Event Link
             </a>
-            <Button variant="primary" size="sm" onClick={handleOnClick}>
-              Show On Map{" "}
-            </Button>
+            {(event.location === "Remote" || event.location === "Zoom") && (
+              <Button variant="primary" size="sm" disabled onClick={handleOnClick}>
+                Show On Map{" "}
+              </Button>
+            )}
+            {event.location !== "Remote" && event.location !== "Zoom" && (
+              <Button variant="primary" size="sm" onClick={handleOnClick}>
+                Show On Map{" "}
+              </Button>
+            )}
           </Stack>
         </Card.Body>
       </Card>

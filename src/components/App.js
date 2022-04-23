@@ -12,8 +12,8 @@ function App(props) {
     <Routes>
       <Route element={<Main />}>
         <Route path="/events" element={<TabPicker className="tabpicker"/>} />
-        <Route path="/Test" element={<Test />} />
-        <Route path="/" element={<AllRestaurants />}/>
+        <Route path="/test" element={<Test />} />
+        <Route path="/restaurants" element={<AllRestaurants />}/>
       </Route>
     </Routes>
   );
