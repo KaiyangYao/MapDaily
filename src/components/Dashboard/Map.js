@@ -86,17 +86,6 @@ class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // check if position has changed
-    if (this.props.diningclicked && this.marker == undefined) {
-      this.marker = L.marker(this.props.markerPosition)
-        .addTo(this.map)
-        .on("click", () => {
-          console.log(this.state.buildings);
-        });
-    } else if (!this.props.diningclicked && this.marker != undefined) {
-      this.map.removeLayer(this.marker);
-      this.marker = undefined;
-    }
 
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
