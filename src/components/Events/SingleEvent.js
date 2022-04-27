@@ -64,11 +64,6 @@ function SingleEvent(props) {
             <a href={event.url} class="card-link" target="_blank">
               Event Link
             </a>
-            {(event.location === "Remote" || event.location === "Zoom") && (
-              <Button variant="primary" size="sm" disabled onClick={handleOnClick}>
-                Show On Map{" "}
-              </Button>
-            )}
             {event.location !== "Remote" && event.location !== "Zoom" && (
               <Button variant="primary" size="sm" onClick={handleOnClick}>
                 Show On Map{" "}
