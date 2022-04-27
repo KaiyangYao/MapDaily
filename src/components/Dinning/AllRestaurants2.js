@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import restaurants from "../../resource/json/restaurant";
-import "../../css/SingleRestaurant.scss";
 import SingleRestaurant2 from "./SingleRestaurant2";
+import "../../css/SingleRestaurant.scss";
 
 class AllRestaurants2 extends Component {
   constructor() {

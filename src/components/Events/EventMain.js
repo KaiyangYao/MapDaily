@@ -1,10 +1,10 @@
-import DateSelector from "./DateSelector";
-import AllEvents from "./AllEvents";
 import { Component } from "react";
 import { Row } from "react-bootstrap";
+import DateSelector from "./DateSelector";
+import AllEvents from "./AllEvents";
 
 
-class EventGallery extends Component{
+class EventMain extends Component{
     constructor(props) {
         super(props);
         this.state = { date: new Date() };
@@ -30,4 +30,4 @@ class EventGallery extends Component{
     }
 }
 
-export default EventGallery
+export default EventMain;

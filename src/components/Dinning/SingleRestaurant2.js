@@ -1,7 +1,4 @@
-import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import nodeFetch from "node-fetch";
-import { createApi } from "unsplash-js";
 import "../../css/SingleRestaurant.scss";
 
 function SingleRestaurant2(props) {

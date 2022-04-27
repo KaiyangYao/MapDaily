@@ -17,9 +17,6 @@ import "../../css/map.css"
 import Link from '@mui/material/Link';
 
 
-
-
-
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
 });

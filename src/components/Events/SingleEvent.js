@@ -1,8 +1,8 @@
 import { Card, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeBuildings } from "../../features/buildingsSlice";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function SingleEvent(props) {
   var event = props.event;

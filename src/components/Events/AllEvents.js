@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import SingleEvent from "./SingleEvent";
 import { s } from "./utils/Calendar";
-import "../../css/AllEvents.css"
+import SingleEvent from "./SingleEvent";
 import Masonry from "react-masonry-css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../css/AllEvents.css"
 
 class AllEvents extends Component {
   constructor() {
