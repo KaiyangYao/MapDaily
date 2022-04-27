@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/App.css";
 import TabPicker from "./TabPicker";
 import Test from "./Test";
-import AllRestaurants from "./Dinning/AllRestaurants";
+import AllRestaurants2 from "./Dinning/AllRestaurants2";
 
 function App(props) {
   return (
@@ -13,7 +13,7 @@ function App(props) {
       <Route element={<Main />}>
         <Route path="/events" element={<TabPicker className="tabpicker"/>} />
         <Route path="/test" element={<Test />} />
-        <Route path="/restaurants" element={<AllRestaurants />}/>
+        <Route path="/restaurants" element={<AllRestaurants2 />}/>
       </Route>
     </Routes>
   );

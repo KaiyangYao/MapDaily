@@ -4,6 +4,7 @@ import SingleRestaurant from "./SingleRestaurant";
 import "../../css/AllEvents.css"
 import Masonry from "react-masonry-css";
 import restaurants from "../../resource/json/restaurant";
+import "../../css/SingleRestaurant.scss";
 
 class AllRestaurants extends Component {
   constructor() {
@@ -24,13 +25,15 @@ class AllRestaurants extends Component {
     };
 
     return (
-      <Masonry
-        breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
+      // <Masonry
+      //   breakpointCols={breakpoints}
+      //   className="my-masonry-grid"
+      //   columnClassName="my-masonry-grid_column"
+      // >
+      <div>
         {restaurantCards}
-      </Masonry>
+        </div>
+      // </Masonry>
     );
   }
 }
