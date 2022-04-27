@@ -5,8 +5,20 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import buildings from "../../resource/json/building";
 import { connect } from "react-redux";
-import { Helmet } from 'react-helmet';
-import LocateControl from 'react-leaflet-locate-control'
+import ReactDOMServer from "react-dom/server";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import library from "../../resource/images/Library.jpeg";
+import Box from '@mui/material/Box';
+import "../../css/map.css"
+import Link from '@mui/material/Link';
+
+
+
+
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
@@ -21,7 +33,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const style = {
   width: "100%",
-  height: "800px",
+  height: "650px",
 };
 
 var defaultStyle = {
@@ -35,7 +47,64 @@ var defaultStyle = {
 var onEachFeature = function (feature, layer) {
   // All we're doing for now is loading the default style.
   // But stay tuned.
+  if(feature.properties.show_on_map){
+    layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup />));
+  }
   layer.setStyle(defaultStyle);
+};
+
+function CustomReactPopup () {
+  return (
+  <Card className= "Card">
+    <Box>
+    <CardMedia
+        component= "img"
+        image = {library}
+        title="Image title"
+        className = "CardMedia"
+      />
+      <CardContent>
+        <Typography variant="subtitle1" color="textSecondary">
+          This will be a general description of the library, placeholders for now, more to come!!!
+        </Typography>
+
+        <Typography>
+      Some Useful Links:
+    </Typography> 
+
+
+    <Grid container spacing={2}> 
+    <Grid item>
+    <Link href="https://www.macalester.edu/library/" target = "_blank">
+        {'Library Website'}
+     </Link>
+    </Grid>
+    <Grid item>
+    <Link href="https://www.macalester.edu/library/about/spaces/" target = "_blank">
+        {'Rooms'}
+     </Link>
+    </Grid>   
+    {/* <Grid item>
+    <Link href="https://www.macalester.edu/library/" target = "_blank">
+        {'Library Website'}
+     </Link>
+    </Grid>   
+    <Grid item>
+    <Link href="https://www.macalester.edu/library/" target = "_blank">
+        {'Library Website'}
+     </Link>
+    </Grid> */}
+     </Grid>
+
+
+      </CardContent>
+
+    
+    </Box>
+
+  </Card>
+
+  );
 };
 
 class Map extends React.Component {
@@ -46,7 +115,7 @@ class Map extends React.Component {
   componentDidMount() {
     // create map
     this.map = L.map("map", {
-      center: [44.9379, -93.1691],
+      center: [44.937 , -93.17],
       zoom: 16,
       layers: [
         L.tileLayer(
@@ -62,9 +131,6 @@ class Map extends React.Component {
         ),
       ],
     })
-    // .locate({ setView: true, maxZoom: 16 });
-
-    
 
     this.geometries = L.geoJSON(this.state.buildings, {
       onEachFeature: onEachFeature,
@@ -73,30 +139,9 @@ class Map extends React.Component {
       },
     }).addTo(this.map);
 
-
-    const locateOptions = {
-      position: 'topright',
-      strings: {
-          title: 'Show me where I am, yo!'
-      },
-      onActivate: () => {} // callback before engine starts retrieving locations
-    };
-    
-    <LocateControl options={locateOptions} startDirectly/>
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // check if position has changed
-    if (this.props.diningclicked && this.marker == undefined) {
-      this.marker = L.marker(this.props.markerPosition)
-        .addTo(this.map)
-        .on("click", () => {
-          console.log(this.state.buildings);
-        });
-    } else if (!this.props.diningclicked && this.marker != undefined) {
-      this.map.removeLayer(this.marker);
-      this.marker = undefined;
-    }
 
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
