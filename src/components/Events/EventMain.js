@@ -19,7 +19,8 @@ class EventMain extends Component{
 
         return (
         <div>
-            <Row className="mt-5">
+            {/* <Row className="mt-5"> */}
+            <Row>
                 <div>
                   <DateSelector onChangeDate={changeDateHandler} />
                 </div>

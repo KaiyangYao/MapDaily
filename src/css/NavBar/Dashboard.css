@@ -1,0 +1,7 @@
+.nav_button {
+  color: white !important;
+}
+
+.nav_button:hover {
+  border-bottom: 0.1em solid white !important;
+}

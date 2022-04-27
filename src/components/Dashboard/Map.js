@@ -6,16 +6,15 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import buildings from "../../resource/json/building";
 import { connect } from "react-redux";
 import ReactDOMServer from "react-dom/server";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import library from "../../resource/images/Library.jpeg";
-import Box from '@mui/material/Box';
-import "../../css/map.css"
-import Link from '@mui/material/Link';
-
+import Box from "@mui/material/Box";
+import "../../css/map.css";
+import Link from "@mui/material/Link";
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
@@ -44,44 +43,45 @@ var defaultStyle = {
 var onEachFeature = function (feature, layer) {
   // All we're doing for now is loading the default style.
   // But stay tuned.
-  if(feature.properties.show_on_map){
+  if (feature.properties.show_on_map) {
     layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup />));
   }
   layer.setStyle(defaultStyle);
 };
 
-function CustomReactPopup () {
+function CustomReactPopup() {
   return (
-  <Card className= "Card">
-    <Box>
-    <CardMedia
-        component= "img"
-        image = {library}
-        title="Image title"
-        className = "CardMedia"
-      />
-      <CardContent>
-        <Typography variant="subtitle1" color="textSecondary">
-          This will be a general description of the library, placeholders for now, more to come!!!
-        </Typography>
+    <Card className="Card">
+      <Box>
+        <CardMedia
+          component="img"
+          image={library}
+          title="Image title"
+          className="CardMedia"
+        />
+        <CardContent>
+          <Typography variant="subtitle1" color="textSecondary">
+            This will be a general description of the library, placeholders for
+            now, more to come!!!
+          </Typography>
 
-        <Typography>
-      Some Useful Links:
-    </Typography> 
+          <Typography>Some Useful Links:</Typography>
 
-
-    <Grid container spacing={2}> 
-    <Grid item>
-    <Link href="https://www.macalester.edu/library/" target = "_blank">
-        {'Library Website'}
-     </Link>
-    </Grid>
-    <Grid item>
-    <Link href="https://www.macalester.edu/library/about/spaces/" target = "_blank">
-        {'Rooms'}
-     </Link>
-    </Grid>   
-    {/* <Grid item>
+          <Grid container spacing={2}>
+            <Grid item>
+              <Link href="https://www.macalester.edu/library/" target="_blank">
+                {"Library Website"}
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link
+                href="https://www.macalester.edu/library/about/spaces/"
+                target="_blank"
+              >
+                {"Rooms"}
+              </Link>
+            </Grid>
+            {/* <Grid item>
     <Link href="https://www.macalester.edu/library/" target = "_blank">
         {'Library Website'}
      </Link>
@@ -91,18 +91,12 @@ function CustomReactPopup () {
         {'Library Website'}
      </Link>
     </Grid> */}
-     </Grid>
-
-
-      </CardContent>
-
-    
-    </Box>
-
-  </Card>
-
+          </Grid>
+        </CardContent>
+      </Box>
+    </Card>
   );
-};
+}
 
 class Map extends React.Component {
   state = {
@@ -112,7 +106,7 @@ class Map extends React.Component {
   componentDidMount() {
     // create map
     this.map = L.map("map", {
-      center: [44.937 , -93.17],
+      center: [44.937, -93.17],
       zoom: 16,
       layers: [
         L.tileLayer(
@@ -127,7 +121,7 @@ class Map extends React.Component {
           }
         ),
       ],
-    })
+    });
 
     this.geometries = L.geoJSON(this.state.buildings, {
       onEachFeature: onEachFeature,
@@ -135,11 +129,9 @@ class Map extends React.Component {
         return feature.properties.show_on_map;
       },
     }).addTo(this.map);
-
   }
 
   componentDidUpdate(prevProps, prevState) {
-
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
       this.geometries = L.geoJSON(this.props.buildingsfromRedux, {
@@ -152,10 +144,7 @@ class Map extends React.Component {
   }
 
   render() {
-    return (
-      <div id="map" style={style}>
-      </div>
-    );
+    return <div id="map" style={style}></div>;
   }
 }
 

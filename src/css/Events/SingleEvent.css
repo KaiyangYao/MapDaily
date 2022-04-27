@@ -1,0 +1,11 @@
+.cust_event_card {
+    border: 0.1rem solid rgb(26, 58, 87) !important;
+    transition: all .3s ease-in-out;
+  }
+
+.cust_event_card:hover {
+  padding-top: 0.5rem;
+  border-top: 1rem solid rgb(26, 58, 87) !important;
+}
+
+

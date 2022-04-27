@@ -3,6 +3,7 @@ import { Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeBuildings } from "../../features/buildingsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../css/Events/SingleEvent.css"
 
 function SingleEvent(props) {
   var event = props.event;
@@ -51,8 +52,7 @@ function SingleEvent(props) {
 
   return (
     <div>
-      {/* 18 */}
-      <Card border="info" style={{ width: "15rem" }} className="mb-3">
+      <Card border="info" style={{ width: "15rem" }} className="mb-3 cust_event_card">
         <Card.Body>
           <Card.Title>{event.summary}</Card.Title>
           <Card.Subtitle className="mt-2 text-muted">
