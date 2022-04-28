@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../css/Events/Date.css";
 
 function DateSelector(props) {
-  const [eventDate, setEventDate] = useState(null);
+  const [eventDate, setEventDate] = useState(new Date());
 
   const handleEventDateSelect = (date) => {
     setEventDate(date);

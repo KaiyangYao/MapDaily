@@ -48,7 +48,8 @@ function NavBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
+        {/* "absolute" */}
         <Toolbar>
           <img src={logo} style={{ heigh: 170, width: 150 }} alt="logo" />
           <Typography

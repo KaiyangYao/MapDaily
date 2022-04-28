@@ -1,7 +1,12 @@
-.Card{
-    display : flex;
+.Card {
+  display: flex;
 }
 
-.CardMedia{
-    width : "1";
+.CardMedia {
+  width: "1";
+}
+
+#map {
+  position: fixed !important;
+  width: 45% !important;
 }
