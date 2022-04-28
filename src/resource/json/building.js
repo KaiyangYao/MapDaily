@@ -1076,7 +1076,8 @@ var buildings = {
         "stroke-opacity": 1,
         "fill": "#f50fcb",
         "fill-opacity": 0.5,
-        "building": "Weyerhauser Chapel"
+        "building": "Weyerhauser Chapel",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",
@@ -1154,7 +1155,8 @@ var buildings = {
         "stroke-opacity": 1,
         "fill": "#20cf5b",
         "fill-opacity": 0.5,
-        "building": "Kagin Commons"
+        "building": "Kagin Commons",
+        "show_on_map" : false
       },
       "geometry": {
         "type": "Polygon",

@@ -22,18 +22,29 @@ function SingleEvent(props) {
     "weyerhauser chapel",
     "kagin",
   ];
-  const handleOnClick = () => {
+  const findIndex = () =>{
     var location = event.location.toLowerCase();
-    var index = 3;
+    var index = undefined;
     for (let i = 0; i < buildings.length; i++) {
+      if(location.includes("kagin commons".toLowerCase())){
+        if(location.includes("ballroom")){
+          index = 8
+          return index;
+        }
+        else{
+          index = 11;
+          return index;
+        }
+      }
       if (buildings[i].length > location.length) {
         if (buildings[i].includes(location.toLowerCase())) {
           index = i;
         }
-      } else {
-        if (location.includes(buildings[i])) {
-          index = i;
+        else{
+          continue;
         }
+      } else if (location.includes(buildings[i])){
+          index = i;
       }
     }
     if (location.includes("weyerhaeuser")) {
@@ -44,9 +55,26 @@ function SingleEvent(props) {
         index = 10;
       }
     }
-    if (location.includes("music")) {
+    if (location.includes("music")||location.includes("art")||location.includes("theater")) {
       index = 2;
     }
+    if (location.includes("macalester")&&location.includes("complex")) {
+      index = 3;
+    }
+    if(location.includes("John B. Davis".toLowerCase())){
+      index = 7;
+    }
+    if(location.includes("olin-rice")){
+      index = 0;
+    }
+    if(location.includes("humanities")){
+      index = 1;
+    }
+    return index;
+  }
+  const index = findIndex();
+
+  const handleOnClick = () => {
     dispatch(changeBuildings(index));
   };
 
@@ -64,7 +92,7 @@ function SingleEvent(props) {
             <a href={event.url} class="card-link" target="_blank">
               Event Link
             </a>
-            {event.location !== "Remote" && event.location !== "Zoom" && (
+            {index!=undefined && (
               <Button variant="primary" size="sm" onClick={handleOnClick}>
                 Show On Map{" "}
               </Button>

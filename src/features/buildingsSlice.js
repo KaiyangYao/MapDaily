@@ -9,8 +9,20 @@ export const buildingsSlice = createSlice({
   },
   reducers: {
     changeBuildings: (state, action) => {
-        state.features[action.payload].properties.show_on_map = !state.features[action.payload].properties.show_on_map;
-        return state;
+    if(state.features[action.payload].properties.show_on_map){
+      return state;
+    }
+    else{
+      for(let i = 0 ; i < state.features.length;i++){
+        if(i == action.payload){
+          state.features[action.payload].properties.show_on_map = true;
+         }
+        else{
+          state.features[i].properties.show_on_map = false;
+         }
+      }
+      return state;
+    }
     }
   }
 })
