@@ -4,7 +4,7 @@ import "../../css/Restaurants/Restaurant.scss";
 function SingleRestaurant(props) {
   var rest = props.rest;
 
-  const handleClick = () => {
+  const handleOnClick = () => {
     window.open(rest.website);
   };
 
@@ -14,7 +14,7 @@ function SingleRestaurant(props) {
         <h2 className="rest_title">{rest.name}</h2>
         <p className="rest_info">{rest.info}</p>
         <div className="rest_btn_group">
-          <button onClick={handleClick} className="rest_btn">
+          <button onClick={handleOnClick} className="rest_btn">
             Show On Map
           </button>
         </div>

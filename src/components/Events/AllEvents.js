@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { s } from "./utils/Calendar";
 import SingleEvent from "./SingleEvent";
+import SingleEventV2 from "./SingleEventV2";
 import Masonry from "react-masonry-css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../css/AllEvents.css"
+import "../../css/Events/AllEvents.css";
 
 class AllEvents extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class AllEvents extends Component {
       events: s,
     };
   }
-  
+
   render() {
     var targetDate = this.props.date;
 
@@ -25,7 +26,7 @@ class AllEvents extends Component {
     });
 
     let eventCards = eventsToday.map((e) => {
-      return <SingleEvent event={e} />;
+      return <SingleEventV2 event={e} />;
     });
 
     const breakpoints = {
@@ -36,13 +37,18 @@ class AllEvents extends Component {
     };
 
     return (
-      <Masonry
-        breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {eventCards}
-      </Masonry>
+      <div>
+        {eventsToday.length == 0 && (
+          <h1 className="no_events">No events today</h1>
+        )}
+        <Masonry
+          breakpointCols={breakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {eventCards}
+        </Masonry>
+      </div>
     );
   }
 }

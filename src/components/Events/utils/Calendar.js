@@ -16,11 +16,13 @@ for (var event of allVevents) {
   var location = event.getFirstPropertyValue("location");
   location = location === "" ? "Remote" : location;
   var url = event.getFirstPropertyValue("url");
+  var description = event.getFirstPropertyValue("description");
 
   summaryList.push({
     summary: summary,
     date: JSDate.toDateString(),
     location: location,
+    description: description,
     url: url,
   });
 }

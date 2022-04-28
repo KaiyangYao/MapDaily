@@ -83,7 +83,7 @@ function SingleEvent(props) {
 
   return (
     <div>
-      <Card border="info" style={{ width: "15rem" }} className="mb-3 cust_event_card">
+      <Card bg='info' border="info" style={{ width: "15rem" }} className="mb-3 cust_event_card">
         <Card.Body>
           <Card.Title>{event.summary}</Card.Title>
           <Card.Subtitle className="mt-2 text-muted">
