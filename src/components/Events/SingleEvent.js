@@ -70,6 +70,9 @@ function SingleEvent(props) {
     if(location.includes("humanities")){
       index = 1;
     }
+    if(location.includes("macalester stadium")){
+      index = 9;
+    }
     return index;
   }
   const index = findIndex();
