@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import buildingsSlice from '../features/buildingsSlice'
+import buildingsSlice from '../utils/buildingsSlice'
 
 
 export default configureStore({

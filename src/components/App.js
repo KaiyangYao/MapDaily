@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Outlet, Route, Routes } from "react-router-dom";
-import Dashboard from "./Dashboard/Dashboard";
-import Test from "./Test";
+import NavBar from "./NavBar/NavBar";
+import Map from "./Map/Map";
 import AllRestaurants from "./Restaurants/AllRestaurants";
 import EventMain from "./Events/EventMain";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,9 +11,8 @@ function App(props) {
   return (
     <Routes>
       <Route element={<Main />}>
-        <Route path="/events" element={<EventMain className="tabpicker"/>} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/restaurants" element={<AllRestaurants />}/>
+        <Route path="/events" element={<EventMain className="tabpicker" />} />
+        <Route path="/restaurants" element={<AllRestaurants />} />
       </Route>
     </Routes>
   );
@@ -21,16 +20,19 @@ function App(props) {
 
 function Main(props) {
   return (
+    <div>
+      <NavBar />
     <Container fluid>
-      <Row>
-        <Col className="col_pd">
-          <Dashboard />
+      <Row className="main_row">
+        <Col className="main_col_left">
+          <Map />
         </Col>
-        <Col className="col_pd">
+        <Col className="main_col_right">
           <Outlet />
         </Col>
       </Row>
     </Container>
+    </div>
   );
 }
 

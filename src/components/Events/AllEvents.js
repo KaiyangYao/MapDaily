@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { s } from "./utils/Calendar";
+import { s } from "../../utils/Calendar";
 import SingleEvent from "./SingleEvent";
 import SingleEventV2 from "./SingleEventV2";
 import Masonry from "react-masonry-css";

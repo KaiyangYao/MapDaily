@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { changeBuildings } from "../../features/buildingsSlice";
+import { changeBuildings } from "../../utils/buildingsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/Events/SingleEvent.css"
 

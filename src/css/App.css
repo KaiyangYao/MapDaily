@@ -37,8 +37,12 @@
   }
 }
 
-.col_pd {
-  padding-top: 7.5em;
+.main_col_left {
+  padding: 7.5rem 1rem 0 2rem;
+}
+
+.main_col_right {
+  padding: 7.5rem 2rem 0 1rem;
 }
 
 .tabpicker {

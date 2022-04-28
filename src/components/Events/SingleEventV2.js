@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { changeBuildings } from "../../features/buildingsSlice";
+import { changeBuildings } from "../../utils/buildingsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/Events/SingleEvent.css";
 import "../../css/Events/SingleEvent2.scss";

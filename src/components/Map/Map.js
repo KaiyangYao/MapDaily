@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import library from "../../resource/images/Library.jpeg";
 import Box from "@mui/material/Box";
-import "../../css/map.css";
+import "../../css/Map/map.css";
 import Link from "@mui/material/Link";
 
 const mapStateToProps = (state) => ({
