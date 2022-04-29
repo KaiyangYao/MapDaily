@@ -1,6 +1,22 @@
-import { events } from "../resource/event";
+import { CommitSharp } from "@mui/icons-material";
+// import { events } from "../resource/event";
 
 const ICAL = require("ical.js");
+
+var events;
+
+fetch("http://localhost:8000/ical.ics")
+  .then(
+    (res) => res.text()
+  )
+  .then(
+    (res) => {
+      events = res;
+    },
+    (err) => {
+      console.log("fetch failed", err);
+    }
+  );
 
 var jcalData = ICAL.parse(events);
 var comp = new ICAL.Component(jcalData);
