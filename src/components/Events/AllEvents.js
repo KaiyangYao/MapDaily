@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { s } from "../../utils/Calendar";
+import fetchEvents from "../../utils/Calendar";
 import SingleEvent from "./SingleEvent";
 import SingleEventV2 from "./SingleEventV2";
 import Masonry from "react-masonry-css";
@@ -10,8 +10,15 @@ class AllEvents extends Component {
   constructor() {
     super();
     this.state = {
-      events: s,
+      events: [],
+      isLoadingEvents: true,
     };
+  }
+
+  componentDidMount() {
+    fetchEvents((events) => {
+      this.setState({ events: events, isLoadingEvents: false });
+    });
   }
 
   render() {
@@ -38,7 +45,10 @@ class AllEvents extends Component {
 
     return (
       <div>
-        {eventsToday.length == 0 && (
+        {this.state.isLoadingEvents && (
+          <h1 className="no_events">Loading...</h1>
+        )}
+        {!this.state.isLoadingEvents && eventsToday.length == 0 && (
           <h1 className="no_events">No events today</h1>
         )}
         <Masonry
