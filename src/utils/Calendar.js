@@ -7,28 +7,19 @@ let summaryList = null;
 function parseEvents(icsString) {
   var jcalData = ICAL.parse(icsString);
   var comp = new ICAL.Component(jcalData);
-  var allVevents = comp.getAllSubcomponents("vevent");
+  var allVEvents = comp.getAllSubcomponents("vevent");
 
-  summaryList = [];
-
-  for (var event of allVevents) {
-    // console.log(event);
-    var summary = event.getFirstPropertyValue("summary");
-    var date = event.getFirstPropertyValue("dtstart"); // ICAL.Date object
-    var JSDate = date.toJSDate();
+  summaryList = allVEvents.map((event) => {
     var location = event.getFirstPropertyValue("location");
-    location = location === "" ? "Remote" : location;
-    var url = event.getFirstPropertyValue("url");
-    var description = event.getFirstPropertyValue("description");
-
-    summaryList.push({
-      summary: summary,
-      date: JSDate.toDateString(),
-      location: location,
-      description: description,
-      url: url,
-    });
-  }
+    
+    return {
+      summary: event.getFirstPropertyValue("summary"),
+      date: event.getFirstPropertyValue("dtstart").toJSDate().toDateString(),
+      location: location === "" ? "Remote" : location,
+      description: event.getFirstPropertyValue("description"),
+      url: event.getFirstPropertyValue("url"),
+    };
+  });
 }
 
 export default function fetchEvents(handleEvents) {

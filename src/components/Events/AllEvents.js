@@ -46,10 +46,10 @@ class AllEvents extends Component {
     return (
       <div>
         {this.state.isLoadingEvents && (
-          <h1 className="no_events">Loading...</h1>
+          <h1 className="events_warning">Loading...</h1>
         )}
         {!this.state.isLoadingEvents && eventsToday.length == 0 && (
-          <h1 className="no_events">No events today</h1>
+          <h1 className="events_warning">No events today</h1>
         )}
         <Masonry
           breakpointCols={breakpoints}
