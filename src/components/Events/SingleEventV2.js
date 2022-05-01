@@ -102,7 +102,7 @@ function SingleEventV2(props) {
           <p className="eventCard__text">{event.date}</p>
           <p className="eventCard__text">{event.location}</p>
           <button className="eventCard__btn" onClick={handleExplore}>
-            Explore <span>&rarr;</span>
+            More Info<span>&rarr;</span>
           </button>
         </div>
       </div>

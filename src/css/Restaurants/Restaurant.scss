@@ -1,8 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap');
 
 // $imageIds: 'zUNs99PGDg0', 'ZuIDLSz3XLg', 'zUNs99PGDg0', 'zUNs99PGDg0';
-$imageIds: 'Xu7W4u5lG9g', 'CwMdIMCB0LU', 'GIUc-l74UT8', 'EtANwY5TXJY', 'xLP1r4oMxlw',
-'BHD2OxkYGSk', 'MqT0asuoIcU', '_79ZJS8pV70';
+// $imageIds: 'Xu7W4u5lG9g',
+// 'CwMdIMCB0LU',
+// 'GIUc-l74UT8',
+// 'EtANwY5TXJY',
+// 'xLP1r4oMxlw',
+// 'BHD2OxkYGSk',
+// 'MqT0asuoIcU',
+// '_79ZJS8pV70';
+
+
+$imageIds: '4_jhDO54BYg',
+'P_z_xlMGuEk',
+'XqYlvd5DGKA',
+'MlPD-AzZYMg',
+'xLP1r4oMxlw',
+'BHD2OxkYGSk',
+'MqT0asuoIcU',
+'_79ZJS8pV70';
+
 
 $bp-md: 600px;
 $bp-lg: 800px;
@@ -35,19 +52,18 @@ $bp-lg: 800px;
   max-width: 1024px;
   margin: 0 auto;
   font-family: var(--font-sans);
-  
+
   @media (min-width: $bp-md) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: $bp-lg) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
+  // @media (min-width: $bp-lg) {
+  //   grid-template-columns: repeat(3, 1fr);
+  // }
 }
 
 
-
-.rest_card {  
+.rest_card {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -57,16 +73,28 @@ $bp-lg: 800px;
   text-align: center;
   color: whitesmoke;
   background-color: whitesmoke;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1), 
-    0 2px 2px rgba(0,0,0,0.1), 
-    0 4px 4px rgba(0,0,0,0.1), 
-    0 8px 8px rgba(0,0,0,0.1),
-    0 16px 16px rgba(0,0,0,0.1);
-  
-  @media (min-width: $bp-md) {
-    height: 250px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+    0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1),
+    0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1);
+
+  background-color: #fff;
+  border-radius: .4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .2s;
+
+  &:hover {
+    transform: translateY(-.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
   }
-  
+
+  @media (min-width: $bp-md) {
+    height: 200px;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -79,7 +107,7 @@ $bp-lg: 800px;
     transition: transform calc(var(--d) * 1.5) var(--e);
     pointer-events: none;
   }
-  
+
   &:after {
     content: '';
     display: block;
@@ -89,35 +117,33 @@ $bp-lg: 800px;
     width: 100%;
     height: 200%;
     pointer-events: none;
-    background-image: linear-gradient(
-      to bottom,
-      hsla(0, 0%, 0%, 0) 0%,
-      hsla(0, 0%, 0%, 0.009) 11.7%,
-      hsla(0, 0%, 0%, 0.034) 22.1%,
-      hsla(0, 0%, 0%, 0.072) 31.2%,
-      hsla(0, 0%, 0%, 0.123) 39.4%,
-      hsla(0, 0%, 0%, 0.182) 46.6%,
-      hsla(0, 0%, 0%, 0.249) 53.1%,
-      hsla(0, 0%, 0%, 0.320) 58.9%,
-      hsla(0, 0%, 0%, 0.394) 64.3%,
-      hsla(0, 0%, 0%, 0.468) 69.3%,
-      hsla(0, 0%, 0%, 0.540) 74.1%,
-      hsla(0, 0%, 0%, 0.607) 78.8%,
-      hsla(0, 0%, 0%, 0.668) 83.6%,
-      hsla(0, 0%, 0%, 0.721) 88.7%,
-      hsla(0, 0%, 0%, 0.762) 94.1%,
-      hsla(0, 0%, 0%, 0.790) 100%
-    );
+    background-image: linear-gradient(to bottom,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 0.009) 11.7%,
+        hsla(0, 0%, 0%, 0.034) 22.1%,
+        hsla(0, 0%, 0%, 0.072) 31.2%,
+        hsla(0, 0%, 0%, 0.123) 39.4%,
+        hsla(0, 0%, 0%, 0.182) 46.6%,
+        hsla(0, 0%, 0%, 0.249) 53.1%,
+        hsla(0, 0%, 0%, 0.320) 58.9%,
+        hsla(0, 0%, 0%, 0.394) 64.3%,
+        hsla(0, 0%, 0%, 0.468) 69.3%,
+        hsla(0, 0%, 0%, 0.540) 74.1%,
+        hsla(0, 0%, 0%, 0.607) 78.8%,
+        hsla(0, 0%, 0%, 0.668) 83.6%,
+        hsla(0, 0%, 0%, 0.721) 88.7%,
+        hsla(0, 0%, 0%, 0.762) 94.1%,
+        hsla(0, 0%, 0%, 0.790) 100%);
     transform: translateY(-50%);
     transition: transform calc(var(--d) * 2) var(--e);
   }
-  
+
   @each $id in $imageIds {
     $i: index($imageIds, $id);
-    
+
     &:nth-child(#{$i}):before {
-      // background-image: url(https://images.unsplash.com/photo-#{$id}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
       background-image: url(https://source.unsplash.com/#{$id});
+      background-position: center;
     }
   }
 }
@@ -132,8 +158,8 @@ $bp-lg: 800px;
   padding: 0.2rem;
   transition: transform var(--d) var(--e);
   z-index: 1;
-  
-  > * + * {
+
+  >*+* {
     margin-top: 0.2rem;
   }
 }
@@ -145,7 +171,7 @@ $bp-lg: 800px;
 }
 
 .rest_info {
-  // padding-top: 1rem;
+  margin-top: 0.5rem;
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-style: italic;
@@ -159,7 +185,7 @@ $bp-lg: 800px;
 
 .rest_btn {
   cursor: pointer;
-  margin-top: 1.5rem;
+  // margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
   font-size: 0.65rem;
   font-weight: bold;
@@ -170,12 +196,14 @@ $bp-lg: 800px;
   border: none;
   display: inline;
   // margin-right: 20px;
-  
+
   &:hover {
     background-color: lighten(black, 5%);
-    display: inline; 
+    display: inline;
+    // transform: translateY(-.5%);
+    // box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
   }
-  
+
   // &:focus {
   //   outline: 1px dashed yellow;
   //   outline-offset: 3px;
@@ -186,11 +214,11 @@ $bp-lg: 800px;
   .rest_card:after {
     transform: translateY(0);
   }
-  
+
   .rest_content {
     transform: translateY(calc(100% - 4.5rem));
-    
-    > *:not(.rest_title) {
+
+    >*:not(.rest_title) {
       opacity: 0;
       transform: translateY(1rem);
       transition:
@@ -198,30 +226,36 @@ $bp-lg: 800px;
         opacity var(--d) var(--e);
     }
   }
-  
+
   .rest_card:hover,
   .rest_card:focus-within {
     align-items: center;
 
-    &:before { transform: translateY(-4%); }
-    &:after { transform: translateY(-50%); }
+    &:before {
+      transform: translateY(-4%);
+    }
+
+    &:after {
+      transform: translateY(-50%);
+    }
 
     .rest_content {
       transform: translateY(0);
 
-      > *:not(.rest_title) {
+      >*:not(.rest_title) {
         opacity: 1;
         transform: translateY(0);
         transition-delay: calc(var(--d) / 8);
       }
     }
   }
-  
+
   .rest_card:focus-within {
+
     &:before,
     &:after,
     .rest_content,
-    .rest_content > *:not(.rest_title) {
+    .rest_content>*:not(.rest_title) {
       transition-duration: 0s;
     }
   }

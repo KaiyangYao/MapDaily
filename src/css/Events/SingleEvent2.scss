@@ -33,18 +33,20 @@ $randomNumber: random(255);
 //     font-size: 62.5%; // 10px/16px
 //   }
 
-//   body {
-//     display: flex;
-//     justify-content: center;
-//     align-content: center;
-//     padding: 6rem;
-//     background-color: #f5f5f5;
-//     font-family: "Inter", sans-serif;
+body {
+    // display: flex;
+    // justify-content: center;
+    // align-content: center;
+    // padding: 6rem;
+    // background-color: #f5f5f5;
+    // font-family: "Inter", sans-serif;
 
-//     @include media(small) {
-//         padding: 3rem;
-//      }
-//   }
+    // @include media(small) {
+    //     padding: 3rem;
+    //  }
+
+    font-family: "Inter", sans-serif;
+}
 
 //   // MAIN CONTENT
 //   .grid {
@@ -121,7 +123,7 @@ $randomNumber: random(255);
 
     &__btn {
         display: block;
-        width: 60%;
+        width: 70%;
         padding: 0.8rem;
         font-size: 1rem;
         text-align: center;
