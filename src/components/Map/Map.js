@@ -11,6 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import library from "../../resource/images/buildingPics/library.jpg";
 import Box from "@mui/material/Box";
 import "../../css/Map/map.css";
 import Link from "@mui/material/Link";
