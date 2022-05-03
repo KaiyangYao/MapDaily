@@ -22,6 +22,10 @@ function SingleEventV2(props) {
     "mac stadium",
     "weyerhauser chapel",
     "kagin",
+    'hayden courts',
+    "nicholson field",
+    "softball",
+    "markim hall",
   ];
   const findIndex = () => {
     var location = event.location.toLowerCase();
@@ -60,9 +64,6 @@ function SingleEventV2(props) {
       location.includes("theater")
     ) {
       index = 2;
-    }
-    if (location.includes("macalester") && location.includes("complex")) {
-      index = 3;
     }
     if (location.includes("John B. Davis".toLowerCase())) {
       index = 7;

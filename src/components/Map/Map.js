@@ -11,10 +11,27 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import library from "../../resource/images/Library.jpeg";
 import Box from "@mui/material/Box";
 import "../../css/Map/map.css";
 import Link from "@mui/material/Link";
+import buildingInfo from "../../resource/json/buildingInfo";
+import library from "../../resource/images/buildingPics/library.jpg";
+import campus_center from "../../resource/images/buildingPics/campus_center.jpg";
+import carniegie from "../../resource/images/buildingPics/carniegie.jpg";
+import j_wall from "../../resource/images/buildingPics/j_wall.jpg";
+import kagin from "../../resource/images/buildingPics/kagin.jpg";
+import leonard_center from "../../resource/images/buildingPics/leonard_center.jpg";
+import mac_stadium from "../../resource/images/buildingPics/mac_stadium.jpg";
+import old_main from "../../resource/images/buildingPics/old_main.jpg";
+import olin_rice from "../../resource/images/buildingPics/olin_rice.jpg";
+import weyerhaeuser_hall from "../../resource/images/buildingPics/weyerhaeuser_hall.jpg";
+import weyerhaeuser_memorial_chapel from "../../resource/images/buildingPics/weyerhaeuser_memorial_chapel.jpg";
+
+
+
+
+var description = "";
+var image = `${weyerhaeuser_memorial_chapel}`;
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
@@ -43,9 +60,9 @@ var defaultStyle = {
 var onEachFeature = function (feature, layer) {
   // All we're doing for now is loading the default style.
   // But stay tuned.
-  if (feature.properties.show_on_map) {
-    layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup />));
-  }
+  // if (feature.properties.show_on_map) {
+  //   layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup />));
+  // }
   layer.setStyle(defaultStyle);
 };
 
@@ -55,14 +72,13 @@ function CustomReactPopup() {
       <Box>
         <CardMedia
           component="img"
-          image={library}
+          image={image}
           title="Image title"
           className="CardMedia"
         />
         <CardContent>
-          <Typography variant="subtitle1" color="textSecondary">
-            This will be a general description of the library, placeholders for
-            now, more to come!!!
+          <Typography variant="body2" color="textSecondary">
+            {description}
           </Typography>
 
           <Typography>Some Useful Links:</Typography>
@@ -101,13 +117,14 @@ function CustomReactPopup() {
 class Map extends React.Component {
   state = {
     buildings: buildings,
+    changedBuilding: ""
   };
 
   componentDidMount() {
     // create map
     this.map = L.map("map", {
       center: [44.937, -93.17],
-      zoom: 16,
+      zoom: 17,
       layers: [
         L.tileLayer(
           "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -132,6 +149,8 @@ class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    var position = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].coordinate;
+
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
       this.geometries = L.geoJSON(this.props.buildingsfromRedux, {
@@ -141,6 +160,13 @@ class Map extends React.Component {
         },
       }).addTo(this.map);
     }
+
+    description = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].descrip;
+    this.map.flyTo(position);
+    this.map.popup = L.popup()
+    .setLatLng(position)
+    .setContent(ReactDOMServer.renderToString(<CustomReactPopup />))
+    .openOn(this.map);
   }
 
   render() {
