@@ -213,7 +213,6 @@ class Map extends React.Component {
 
     position[0] = position[0]+0.0015;
 
-    console.log(image)
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
       this.geometries = L.geoJSON(this.props.buildingsfromRedux, {
