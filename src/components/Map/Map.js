@@ -228,7 +228,7 @@ class Map extends React.Component {
         // this.map.panTo(position);
         // console.log(position)
         this.map.setZoom(16)
-        this.map.flyTo(L.latLng(position[0]+0.0015,position[1]))
+        this.map.flyTo(L.latLng(position[0]+0.0028,position[1]))
         this.map.popup = L.popup()
         .setLatLng(position)
         .setContent(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>))

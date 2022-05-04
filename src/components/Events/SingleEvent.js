@@ -81,7 +81,10 @@ function SingleEventV2(props) {
   const index = findIndex();
 
   const handleOnClick = () => {
-    dispatch(changeBuildings(index));
+    if(!props.isOffCampus){
+      dispatch(changeBuildings(index));
+    }
+    else return
   };
 
   const handleExplore = () => {
@@ -89,14 +92,14 @@ function SingleEventV2(props) {
   };
 
   return (
-    <div className="eventItem" onClick={handleOnClick}>
+    <div className={ props.isOffCampus ? "eventItem__hidden" : "eventItem__shown"}  onClick = {handleOnClick}>
       <div className="eventCard">
         {!props.isOffCampus && (
           <div className="eventCard__top" style={{ backgroundColor: color }} />
         )}
         {props.isOffCampus && (
-          <div className="eventCard__top" style={{ backgroundColor: color }}>
-            Off Campus
+          <div className="eventCard__top" style={{ backgroundColor: "black" }}>
+            NOT ON CAMPUS
           </div>
         )}
 
