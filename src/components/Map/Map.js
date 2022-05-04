@@ -26,12 +26,13 @@ import old_main from "../../resource/images/buildingPics/old_main.jpg";
 import olin_rice from "../../resource/images/buildingPics/olin_rice.jpg";
 import weyerhaeuser_hall from "../../resource/images/buildingPics/weyerhaeuser_hall.jpg";
 import weyerhaeuser_memorial_chapel from "../../resource/images/buildingPics/weyerhaeuser_memorial_chapel.jpg";
+import humanity from "../../resource/images/buildingPics/humanity.jpg"
+import markim_hall from "../../resource/images/buildingPics/markim_hall.jpg"
 
+var buildingName
+var image 
+var description
 
-
-
-var description = "";
-var image = `${weyerhaeuser_memorial_chapel}`;
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
@@ -57,31 +58,96 @@ var defaultStyle = {
   fillColor: "#2262CC",
 };
 
+var assignImage = function(buildingName){
+  var image
+  switch(buildingName){
+    case "Olin Rice":
+      image = olin_rice;
+      return image;
+
+    case "Humanity":
+      image = humanity;
+      return image;
+
+    case "Janet Wallace Fine Arts Center":
+      image = j_wall;
+      return image;
+
+    case "Leonard Center":
+      image = leonard_center;
+      return image;
+
+    case "Old Main":
+      image = old_main;
+      return image;
+
+    case "Carnegie Hall":
+      image = carniegie;
+      return image;
+
+    case "Library":
+      image = library;
+      return image;
+
+    case "Campus Center":
+      image = campus_center;
+      return image;
+
+    case "Weyerhauser Hall":
+      image = weyerhaeuser_hall
+      return image;
+
+    case "Mac Stadium":
+      image = mac_stadium;
+      return image;
+
+    case "Weyerhauser Chapel":
+      image = weyerhaeuser_memorial_chapel;
+      return image;
+
+    case "Kagin Commons":
+      image = kagin
+      return image;
+    case "Markim Hall":
+      image = markim_hall
+      return image
+  }
+
+}
+
 var onEachFeature = function (feature, layer) {
   // All we're doing for now is loading the default style.
   // But stay tuned.
-  // if (feature.properties.show_on_map) {
-  //   layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup />));
-  // }
+  if (feature.properties.show_on_map) {
+    layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>));
+  }
   layer.setStyle(defaultStyle);
 };
 
-function CustomReactPopup() {
+function CustomReactPopup(props) {
+  const Style = {
+    height: 150,
+  };
+  
   return (
     <Card className="Card">
       <Box>
-        <CardMedia
+       {props.image != undefined && <CardMedia
+          style = {Style}
           component="img"
-          image={image}
+          image={props.image}
           title="Image title"
           className="CardMedia"
-        />
+        />}
         <CardContent>
+          <Typography variant="h6" >
+            {props.buildingName}
+          </Typography>
           <Typography variant="body2" color="textSecondary">
-            {description}
+            {props.description}
           </Typography>
 
-          <Typography>Some Useful Links:</Typography>
+          <Typography variant = "h6">Some Useful Links:</Typography>
 
           <Grid container spacing={2}>
             <Grid item>
@@ -97,16 +163,6 @@ function CustomReactPopup() {
                 {"Rooms"}
               </Link>
             </Grid>
-            {/* <Grid item>
-    <Link href="https://www.macalester.edu/library/" target = "_blank">
-        {'Library Website'}
-     </Link>
-    </Grid>   
-    <Grid item>
-    <Link href="https://www.macalester.edu/library/" target = "_blank">
-        {'Library Website'}
-     </Link>
-    </Grid> */}
           </Grid>
         </CardContent>
       </Box>
@@ -125,6 +181,7 @@ class Map extends React.Component {
     this.map = L.map("map", {
       center: [44.937, -93.17],
       zoom: 17,
+      maxZoom: 17,
       layers: [
         L.tileLayer(
           "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -150,7 +207,13 @@ class Map extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     var position = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].coordinate;
+    buildingName = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].name
+    image = assignImage(buildingName)
+    description = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].descrip;
 
+    position[0] = position[0]+0.0015;
+
+    console.log(image)
     if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
       this.map.removeLayer(this.geometries);
       this.geometries = L.geoJSON(this.props.buildingsfromRedux, {
@@ -161,11 +224,13 @@ class Map extends React.Component {
       }).addTo(this.map);
     }
 
-    description = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].descrip;
+
     this.map.flyTo(position);
+
+    position[0] = position[0]-0.0015;
     this.map.popup = L.popup()
     .setLatLng(position)
-    .setContent(ReactDOMServer.renderToString(<CustomReactPopup />))
+    .setContent(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>))
     .openOn(this.map);
   }
 
