@@ -9,7 +9,8 @@ import logo from "../../resource/images/logo_white.svg";
 import { useNavigate } from "react-router-dom";
 import "../../css/NavBar/Dashboard.css";
 import { useDispatch } from "react-redux";
-import { reset } from "../../utils/buildingsSlice";
+import { resetBuilding } from "../../utils/buildingsSlice";
+import { resetRestaurant } from "../../utils/restaurantSlice"
 
 
 const styles = (theme) => ({
@@ -44,10 +45,11 @@ function NavBar(props) {
   const { classes } = props;
   const navigate = useNavigate();
   function navigateToRestaurants() {
-    dispatch(reset());
+    dispatch(resetBuilding());
     navigate("/restaurants");
   }
   function navigateToEvents() {
+    dispatch(resetRestaurant());
     navigate("/events");
   }
 

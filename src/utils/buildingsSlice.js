@@ -30,7 +30,7 @@ export const buildingsSlice = createSlice({
     }
     },
 
-    reset(state) {
+    resetBuilding(state) {
       return { ...initialstate }
   }
   }
@@ -39,7 +39,7 @@ export const buildingsSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   changeBuildings,
-  reset
+  resetBuilding
  } = buildingsSlice.actions
 
 export default buildingsSlice.reducer

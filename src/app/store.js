@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import buildingsSlice from '../utils/buildingsSlice'
-
+import buildingsReducer from '../utils/buildingsSlice'
+import restaurantReducer  from '../utils/restaurantSlice'
 
 export default configureStore({
-  reducer: {
-    buildings: buildingsSlice
+  reducer :{
+    restaurants: restaurantReducer,
+    buildings: buildingsReducer
   }
 })
