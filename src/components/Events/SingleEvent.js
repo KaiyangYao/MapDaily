@@ -1,11 +1,11 @@
-import { Card, Button } from "react-bootstrap";
-import { Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeBuildings } from "../../utils/buildingsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../css/Events/SingleEvent.css"
+import "../../css/Events/SingleEvent.scss";
 
-function SingleEvent(props) {
+function SingleEventV2(props) {
+  var randomColor = require("randomcolor");
+  var color = randomColor();
   var event = props.event;
   const dispatch = useDispatch();
   var buildings = [
@@ -21,17 +21,20 @@ function SingleEvent(props) {
     "mac stadium",
     "weyerhauser chapel",
     "kagin",
+    "hayden courts",
+    "nicholson field",
+    "softball",
+    "markim hall",
   ];
-  const findIndex = () =>{
+  const findIndex = () => {
     var location = event.location.toLowerCase();
     var index = undefined;
     for (let i = 0; i < buildings.length; i++) {
-      if(location.includes("kagin commons".toLowerCase())){
-        if(location.includes("ballroom")){
-          index = 8
+      if (location.includes("kagin commons".toLowerCase())) {
+        if (location.includes("ballroom")) {
+          index = 8;
           return index;
-        }
-        else{
+        } else {
           index = 11;
           return index;
         }
@@ -39,12 +42,11 @@ function SingleEvent(props) {
       if (buildings[i].length > location.length) {
         if (buildings[i].includes(location.toLowerCase())) {
           index = i;
-        }
-        else{
+        } else {
           continue;
         }
-      } else if (location.includes(buildings[i])){
-          index = i;
+      } else if (location.includes(buildings[i])) {
+        index = i;
       }
     }
     if (location.includes("weyerhaeuser")) {
@@ -55,56 +57,60 @@ function SingleEvent(props) {
         index = 10;
       }
     }
-    if (location.includes("music")||location.includes("art")||location.includes("theater")) {
+    if (
+      location.includes("music") ||
+      location.includes("art") ||
+      location.includes("theater")
+    ) {
       index = 2;
     }
-    if (location.includes("macalester")&&location.includes("complex")) {
-      index = 3;
-    }
-    if(location.includes("John B. Davis".toLowerCase())){
+    if (location.includes("John B. Davis".toLowerCase())) {
       index = 7;
     }
-    if(location.includes("olin-rice")){
+    if (location.includes("olin-rice")) {
       index = 0;
     }
-    if(location.includes("humanities")){
+    if (location.includes("humanities")) {
       index = 1;
     }
-    if(location.includes("macalester stadium")){
+    if (location.includes("macalester stadium")) {
       index = 9;
     }
     return index;
-  }
+  };
   const index = findIndex();
 
   const handleOnClick = () => {
     dispatch(changeBuildings(index));
   };
 
-  return (
-    <div>
-      <Card bg='info' border="info" style={{ width: "15rem" }} className="mb-3 cust_event_card">
-        <Card.Body>
-          <Card.Title>{event.summary}</Card.Title>
-          <Card.Subtitle className="mt-2 text-muted">
-            {event.date}
-          </Card.Subtitle>
-          <Card.Text>{event.location}</Card.Text>
+  const handleExplore = () => {
+    window.open(event.url);
+  };
 
-          <Stack direction="row" spacing={2} justifyContent="space-between">
-            <a href={event.url} class="card-link" target="_blank">
-              Event Link
-            </a>
-            {index!=undefined && (
-              <Button variant="primary" size="sm" onClick={handleOnClick}>
-                Show On Map{" "}
-              </Button>
-            )}
-          </Stack>
-        </Card.Body>
-      </Card>
+  return (
+    <div className="eventItem" onClick={handleOnClick}>
+      <div className="eventCard">
+        {!props.isOffCampus && (
+          <div className="eventCard__top" style={{ backgroundColor: color }} />
+        )}
+        {props.isOffCampus && (
+          <div className="eventCard__top" style={{ backgroundColor: color }}>
+            Off Campus
+          </div>
+        )}
+
+        <div className="eventCard__content">
+          <h1 className="eventCard__header">{event.summary}</h1>
+          <p className="eventCard__text">{event.date}</p>
+          <p className="eventCard__text">{event.location}</p>
+          <button className="eventCard__btn" onClick={handleExplore}>
+            More Info<span>&rarr;</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default SingleEvent;
+export default SingleEventV2;

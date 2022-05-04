@@ -15,7 +15,7 @@ function parseEvents(icsString) {
     return {
       summary: event.getFirstPropertyValue("summary"),
       date: event.getFirstPropertyValue("dtstart").toJSDate().toDateString(),
-      location: location === "" ? "Remote" : location,
+      location: location === "" || location === "Online" ? "Remote" : location,
       description: event.getFirstPropertyValue("description"),
       url: event.getFirstPropertyValue("url"),
     };
@@ -27,7 +27,7 @@ export default function fetchEvents(handleEvents) {
     handleEvents(summaryList);
     return;
   }
-  fetch("http://localhost:8000/ical.ics")
+  fetch("https://mapdaily-cal-server.herokuapp.com/calendar")
     .then((res) => res.text())
     .then(
       (res) => {

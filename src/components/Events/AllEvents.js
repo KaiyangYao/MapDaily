@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import fetchEvents from "../../utils/Calendar";
 import SingleEvent from "./SingleEvent";
-import SingleEventV2 from "./SingleEventV2";
 import Masonry from "react-masonry-css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/Events/AllEvents.css";
@@ -32,8 +31,16 @@ class AllEvents extends Component {
       );
     });
 
-    let eventCards = eventsToday.map((e) => {
-      return <SingleEventV2 event={e} />;
+    let eventCardsOnCampus = eventsToday.map((e) => {
+      if (!(e.location.includes("MN") || e.location === "Remote")) {
+        return <SingleEvent event={e} isOffCampus={false} />;
+      }
+    });
+
+    let eventCardsOffCampus = eventsToday.map((e) => {
+      if ((e.location.includes("MN") || e.location === "Remote")) {
+        return <SingleEvent event={e} isOffCampus={true} />;
+      }
     });
 
     const breakpoints = {
@@ -56,7 +63,8 @@ class AllEvents extends Component {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {eventCards}
+          {eventCardsOnCampus}
+          {eventCardsOffCampus}
         </Masonry>
       </div>
     );

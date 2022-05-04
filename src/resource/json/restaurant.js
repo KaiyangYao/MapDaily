@@ -130,7 +130,7 @@ var restaurants = [
         "id": "19",
         "name": "Simplicitea",
         "info": "Every day, we go to work hoping to do two things: share great coffee with our friends and help make the world a little better",
-        "website": "https://simpliciteamn.com/page/contact-us",
+        "website": "https://simpliciteamn.com/",
         "coordinate": [44.93304709948257, -93.1668275648622]
     },
     {
