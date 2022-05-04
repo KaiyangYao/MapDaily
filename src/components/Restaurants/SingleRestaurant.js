@@ -15,7 +15,7 @@ function SingleRestaurant(props) {
         <p className="rest_info">{rest.info}</p>
         <div className="rest_btn_group">
           <button onClick={handleOnClick} className="rest_btn">
-            Show On Map
+            GO TO WEBSITE
           </button>
         </div>
       </div>

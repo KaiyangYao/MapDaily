@@ -180,7 +180,7 @@ class Map extends React.Component {
     // create map
     this.map = L.map("map", {
       center: [44.937, -93.17],
-      zoom: 17,
+      zoom: 16,
       maxZoom: 17,
       layers: [
         L.tileLayer(
@@ -188,7 +188,7 @@ class Map extends React.Component {
           {
             attribution:
               'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
+            maxZoom: 17,
             id: "mapbox/streets-v11",
             accessToken:
               "pk.eyJ1IjoiZXJpY2xpMTIzMzIiLCJhIjoiY2wxMnU2dXJrMzd3dTNpcGtva2xkOW52eCJ9.QHypxQDAlVZnHPD5oVDyNg",
@@ -206,34 +206,44 @@ class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    var position = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].coordinate;
-    buildingName = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].name
-    image = assignImage(buildingName)
-    description = buildingInfo[this.props.buildingsfromRedux.currentBuildingIndex].descrip;
 
-    position[0] = position[0]+0.0015;
-
-    console.log(image)
-    if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
-      this.map.removeLayer(this.geometries);
-      this.geometries = L.geoJSON(this.props.buildingsfromRedux, {
-        onEachFeature: onEachFeature,
-        filter: function (feature, layer) {
-          return feature.properties.show_on_map;
-        },
-      }).addTo(this.map);
+      if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
+        var currentBuildingIndex = this.props.buildingsfromRedux.currentBuildingIndex
+      
+      if(currentBuildingIndex != -1)  { 
+        var position = buildingInfo[currentBuildingIndex].coordinate;
+        buildingName = buildingInfo[currentBuildingIndex].name
+        image = assignImage(buildingName)
+        description = buildingInfo[currentBuildingIndex].descrip;
+        // position[0] = position[0]-0.0015;
+        if(this.map.geometries!=undefined){
+          this.map.removeLayer(this.map.geometries);
+        }
+        this.map.geometries = L.geoJSON(this.props.buildingsfromRedux, {
+          onEachFeature: onEachFeature,
+          filter: function (feature, layer) {
+            return feature.properties.show_on_map;
+          },
+        }).addTo(this.map);
+        // this.map.panTo(position);
+        // console.log(position)
+        this.map.setZoom(16)
+        this.map.flyTo(L.latLng(position[0]+0.0015,position[1]))
+        this.map.popup = L.popup()
+        .setLatLng(position)
+        .setContent(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>))
+        .openOn(this.map);
+       }
+       else if(this.map.geometries!=undefined){
+        this.map.removeLayer(this.map.geometries)
+        this.map.removeLayer(this.map.popup)
+        // this.map.setZoom(17)
+        this.map.flyTo([44.9362, -93.17])
+      }else{
+        this.map.flyTo([44.9362, -93.17])
+      }
     }
-
-
-    this.map.flyTo(position);
-
-    position[0] = position[0]-0.0015;
-    this.map.popup = L.popup()
-    .setLatLng(position)
-    .setContent(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>))
-    .openOn(this.map);
-  }
-
+    }
   render() {
     return <div id="map" style={style}></div>;
   }

@@ -8,6 +8,9 @@ import Button from "@material-ui/core/Button";
 import logo from "../../resource/images/logo_white.svg";
 import { useNavigate } from "react-router-dom";
 import "../../css/NavBar/Dashboard.css";
+import { useDispatch } from "react-redux";
+import { reset } from "../../utils/buildingsSlice";
+
 
 const styles = (theme) => ({
   title: {
@@ -37,9 +40,11 @@ const styles = (theme) => ({
 });
 
 function NavBar(props) {
+  const dispatch = useDispatch();
   const { classes } = props;
   const navigate = useNavigate();
   function navigateToRestaurants() {
+    dispatch(reset());
     navigate("/restaurants");
   }
   function navigateToEvents() {
@@ -60,7 +65,6 @@ function NavBar(props) {
           ></Typography>
           <Button onClick={navigateToEvents} className="nav_button">Events</Button>
           <Button onClick={navigateToRestaurants} className="nav_button"> Restaurants</Button>
-          <Button className="nav_button">Study</Button>
         </Toolbar>
       </AppBar>
       {/* <main className={classes.content}>

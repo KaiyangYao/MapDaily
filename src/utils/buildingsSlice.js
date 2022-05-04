@@ -2,13 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 import building from "../resource/json/building";
 
 var buildings = building
+const initialstate = {
+  ...buildings,
+  currentBuildingIndex : -1,
+  showOnMap : true
+}
 export const buildingsSlice = createSlice({
   name: 'geoJson',
-  initialState: {
-    ...buildings,
-    currentBuildingIndex : -1,
-    showOnMap : true
-  },
+  initialState: initialstate,
   reducers: {
     changeBuildings: (state, action) => {
     if(state.features[action.payload].properties.show_on_map){
@@ -27,11 +28,18 @@ export const buildingsSlice = createSlice({
       }
       return state;
     }
-    }
+    },
+
+    reset(state) {
+      return { ...initialstate }
+  }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const {changeBuildings } = buildingsSlice.actions
+export const {
+  changeBuildings,
+  reset
+ } = buildingsSlice.actions
 
 export default buildingsSlice.reducer
