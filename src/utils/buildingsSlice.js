@@ -6,11 +6,13 @@ export const buildingsSlice = createSlice({
   name: 'geoJson',
   initialState: {
     ...buildings,
-    currentBuildingIndex : -1
+    currentBuildingIndex : -1,
+    showOnMap : true
   },
   reducers: {
     changeBuildings: (state, action) => {
     if(state.features[action.payload].properties.show_on_map){
+      state.showonMap = !state.showonMap
       return state;
     }
     else{
