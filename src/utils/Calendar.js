@@ -15,7 +15,7 @@ function parseEvents(icsString) {
     return {
       summary: event.getFirstPropertyValue("summary"),
       date: event.getFirstPropertyValue("dtstart").toJSDate().toDateString(),
-      location: location === "" ? "Remote" : location,
+      location: location === "" || location === "Online" ? "Remote" : location,
       description: event.getFirstPropertyValue("description"),
       url: event.getFirstPropertyValue("url"),
     };
