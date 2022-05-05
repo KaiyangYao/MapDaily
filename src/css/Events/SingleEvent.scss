@@ -43,7 +43,6 @@ body {
         border-radius: .4rem;
         overflow: hidden;
         box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
-        transition: $transition;
     }
 }
 
@@ -56,6 +55,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        // color: rgb(212, 68, 33)
         color: white
     }
 

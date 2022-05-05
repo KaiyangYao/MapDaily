@@ -32,13 +32,13 @@ class AllEvents extends Component {
     });
 
     let eventCardsOnCampus = eventsToday.map((e) => {
-      if (!(e.location.includes("MN") || e.location === "Remote")) {
+      if (! (e.location.includes("MN") && !e.location.includes("Home")) && !(e.location === "Remote")) {
         return <SingleEvent event={e} isOffCampus={false} />;
       }
     });
 
     let eventCardsOffCampus = eventsToday.map((e) => {
-      if ((e.location.includes("MN") || e.location === "Remote")) {
+      if ((e.location.includes("MN") && (!e.location.includes("Home")) || e.location === "Remote")) {
         return <SingleEvent event={e} isOffCampus={true} />;
       }
     });

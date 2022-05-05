@@ -5,7 +5,8 @@ import "../../css/Events/SingleEvent.scss";
 
 function SingleEventV2(props) {
   var randomColor = require("randomcolor");
-  var color = randomColor();
+  var onCampuscolor = randomColor();
+  var offCampuscolor = "#033555";
   var event = props.event;
   const dispatch = useDispatch();
   var buildings = [
@@ -95,10 +96,10 @@ function SingleEventV2(props) {
     <div className={ props.isOffCampus ? "eventItem__hidden" : "eventItem__shown"}  onClick = {handleOnClick}>
       <div className="eventCard">
         {!props.isOffCampus && (
-          <div className="eventCard__top" style={{ backgroundColor: color }} />
+          <div className="eventCard__top" style={{ backgroundColor: onCampuscolor }} />
         )}
         {props.isOffCampus && (
-          <div className="eventCard__top" style={{ backgroundColor: "black" }}>
+          <div className="eventCard__top" style={{ backgroundColor: offCampuscolor}}>
             NOT ON CAMPUS
           </div>
         )}
