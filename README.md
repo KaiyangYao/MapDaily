@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Map Daily
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Explore the daily events on campus and find a good place to dine.
 
-## Available Scripts
+# About The Project
 
-In the project directory, you can run:
+This is a web application mainly for current student. It allows students to explore what events are happening on campus. It also itegrated a list of good dining places around campus with walking distance.
 
-### `npm start`
+### Campus Events
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the events panel, once selected a date, a list of event cards will show up, listing the basic info of each event and the hyperlinks to the event page. If an event is happening in-person at macalester, the specific building related will be highlighted on the map once the event card is clicked.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dining Places
 
-### `npm test`
+In the restaurants panel, a list of restaurants near campus with walking distance is shown. You could explore any of them you like and a single click will direct you to the main page of the restaurant.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Technologies
 
-### `npm run build`
+### Framework
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [React](https://reactjs.org/)
+- [Leaflet](https://leafletjs.com)
+- [Bootstrap](https://getbootstrap.com)
+- [Material-UI](https://mui.com)
 
-### `npm run eject`
+# Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Download the JavaScript runtime [Node.js](https://nodejs.org/).
+2. Download the latest package manager npm: in your terminal, type `npm install npm@latest -g`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone this repository: `git clone https://github.com/KaiyangYao/MapDaily.git`
+2. Run `npm install` from the project root to install all the project dependencies
+3. You are all set! :tada:
 
-## Learn More
+### Start the app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Run `npm start` from the project root to run the app
+2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Future Work
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Get in touch with the school's ITS office to make the calendar data public
+2. Currently not all the events are submitted to the college calendar. We will try to talk to each department and let them submit the event
+3. Update more features besides events and restaurants
