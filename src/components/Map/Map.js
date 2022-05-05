@@ -6,14 +6,8 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import buildings from "../../resource/json/building";
 import { connect } from "react-redux";
 import ReactDOMServer from "react-dom/server";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Box from "@mui/material/Box";
+import CustomPopup from "./CustomPopup";
 import "../../css/Map/map.css";
-import Link from "@mui/material/Link";
 import buildingInfo from "../../resource/json/buildingInfo";
 import library from "../../resource/images/buildingPics/library.jpg";
 import campus_center from "../../resource/images/buildingPics/campus_center.jpg";
@@ -26,18 +20,17 @@ import old_main from "../../resource/images/buildingPics/old_main.jpg";
 import olin_rice from "../../resource/images/buildingPics/olin_rice.jpg";
 import weyerhaeuser_hall from "../../resource/images/buildingPics/weyerhaeuser_hall.jpg";
 import weyerhaeuser_memorial_chapel from "../../resource/images/buildingPics/weyerhaeuser_memorial_chapel.jpg";
-import humanity from "../../resource/images/buildingPics/humanity.jpg"
-import markim_hall from "../../resource/images/buildingPics/markim_hall.jpg"
+import humanity from "../../resource/images/buildingPics/humanity.jpg";
+import markim_hall from "../../resource/images/buildingPics/markim_hall.jpg";
 import restaurants from "../../resource/json/restaurant";
 
-var buildingName
-var image 
-var description
-
+var buildingName;
+var image;
+var description;
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
-  restaurantsfromRedux: state.restaurants
+  restaurantsfromRedux: state.restaurants,
 });
 
 let DefaultIcon = L.icon({
@@ -60,26 +53,28 @@ var defaultStyle = {
   fillColor: "#2262CC",
 };
 
-var addResMarker = function(map){
-  if(map.group != undefined){
-    map.removeLayer(map.group)
+var addResMarker = function (map) {
+  if (map.group !== undefined) {
+    map.removeLayer(map.group);
   }
   var markerArray = [];
   for (var i = 0; i < restaurants.length; i++) {
-      var posit = restaurants[i].coordinate;
-      var name =  restaurants[i].name;
-      markerArray.push(L.marker(posit, {
-        riseOnHover:true
-      }).bindPopup(name));
+    var posit = restaurants[i].coordinate;
+    var name = restaurants[i].name;
+    markerArray.push(
+      L.marker(posit, {
+        riseOnHover: true,
+      }).bindPopup(name)
+    );
   }
 
- map.group = L.featureGroup(markerArray).addTo(map)
- map.fitBounds(map.group.getBounds())
-}
+  map.group = L.featureGroup(markerArray).addTo(map);
+  map.fitBounds(map.group.getBounds());
+};
 
-var assignImage = function(buildingName){
-  var image
-  switch(buildingName){
+var assignImage = function (buildingName) {
+  var image;
+  switch (buildingName) {
     case "Olin Rice":
       image = olin_rice;
       return image;
@@ -113,7 +108,7 @@ var assignImage = function(buildingName){
       return image;
 
     case "Weyerhauser Hall":
-      image = weyerhaeuser_hall
+      image = weyerhaeuser_hall;
       return image;
 
     case "Mac Stadium":
@@ -125,74 +120,37 @@ var assignImage = function(buildingName){
       return image;
 
     case "Kagin Commons":
-      image = kagin
+      image = kagin;
       return image;
-    case "Markim Hall":
-      image = markim_hall
-      return image
-  }
 
-}
+    case "Markim Hall":
+      image = markim_hall;
+      return image;
+
+    default:
+      return image;
+  }
+};
 
 var onEachFeature = function (feature, layer) {
-  // All we're doing for now is loading the default style.
-  // But stay tuned.
   if (feature.properties.show_on_map) {
-    layer.bindPopup(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>));
+    layer.bindPopup(
+      ReactDOMServer.renderToString(
+        <CustomPopup
+          image={image}
+          description={description}
+          buildingName={buildingName}
+        />
+      )
+    );
   }
   layer.setStyle(defaultStyle);
 };
 
-function CustomReactPopup(props) {
-  const Style = {
-    height: 150,
-  };
-  
-  return (
-    <Card className="Card">
-      <Box>
-       {props.image != undefined && <CardMedia
-          style = {Style}
-          component="img"
-          image={props.image}
-          title="Image title"
-          className="CardMedia"
-        />}
-        <CardContent>
-          <Typography variant="h6" >
-            {props.buildingName}
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {props.description}
-          </Typography>
-
-          <Typography variant = "h6">Some Useful Links:</Typography>
-
-          <Grid container spacing={2}>
-            <Grid item>
-              <Link href="https://www.macalester.edu/library/" target="_blank">
-                {"Library Website"}
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                href="https://www.macalester.edu/library/about/spaces/"
-                target="_blank"
-              >
-                {"Rooms"}
-              </Link>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Box>
-    </Card>
-  );
-}
-
 class Map extends React.Component {
   state = {
     buildings: buildings,
-    restaurants :restaurants
+    restaurants: restaurants,
   };
 
   componentDidMount() {
@@ -225,15 +183,15 @@ class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-
-      if (prevProps.buildingsfromRedux != this.props.buildingsfromRedux) {
-        var currentBuildingIndex = this.props.buildingsfromRedux.currentBuildingIndex
-      if(currentBuildingIndex != -1)  { 
+    if (prevProps.buildingsfromRedux !== this.props.buildingsfromRedux) {
+      var currentBuildingIndex =
+        this.props.buildingsfromRedux.currentBuildingIndex;
+      if (currentBuildingIndex !== -1) {
         var position = buildingInfo[currentBuildingIndex].coordinate;
-        buildingName = buildingInfo[currentBuildingIndex].name
-        image = assignImage(buildingName)
+        buildingName = buildingInfo[currentBuildingIndex].name;
+        image = assignImage(buildingName);
         description = buildingInfo[currentBuildingIndex].descrip;
-        if(this.map.geometries!=undefined){
+        if (this.map.geometries !== undefined) {
           this.map.removeLayer(this.map.geometries);
         }
         this.map.geometries = L.geoJSON(this.props.buildingsfromRedux, {
@@ -242,58 +200,55 @@ class Map extends React.Component {
             return feature.properties.show_on_map;
           },
         }).addTo(this.map);
-        this.map.setZoom(16)
-        this.map.flyTo(L.latLng(position[0]+0.0028,position[1]),16)
+        this.map.setZoom(16);
+        this.map.flyTo(L.latLng(position[0] + 0.0028, position[1]), 16);
         this.map.popup = L.popup()
-        .setLatLng(position)
-        .setContent(ReactDOMServer.renderToString(<CustomReactPopup image={image} description = {description} buildingName = {buildingName}/>))
-        .openOn(this.map);
-       }
-       else if(this.map.geometries!=undefined){
-        this.map.removeLayer(this.map.geometries)
-        this.map.removeLayer(this.map.popup)
+          .setLatLng(position)
+          .setContent(
+            ReactDOMServer.renderToString(
+              <CustomPopup
+                image={image}
+                description={description}
+                buildingName={buildingName}
+              />
+            )
+          )
+          .openOn(this.map);
+      } else if (this.map.geometries !== undefined) {
+        this.map.removeLayer(this.map.geometries);
+        this.map.removeLayer(this.map.popup);
+        addResMarker(this.map);
+      } else {
+        this.map.flyTo([44.9362, -93.17]);
         addResMarker(this.map);
       }
-       
-       else{
-        this.map.flyTo([44.9362, -93.17])
-        addResMarker(this.map)
-      }
     }
-    if (prevProps.restaurantsfromRedux != this.props.restaurantsfromRedux){
+    if (prevProps.restaurantsfromRedux !== this.props.restaurantsfromRedux) {
       var index = this.props.restaurantsfromRedux.currentBuildingIndex;
-      if(index==-1){
-        if(this.map.group != undefined){
+      if (index === -1) {
+        if (this.map.group !== undefined) {
           this.map.removeLayer(this.map.group);
         }
-        if(this.map.restpopup!=undefined){
+        if (this.map.restpopup !== undefined) {
           this.map.removeLayer(this.map.restpopup);
         }
-  
-        this.map.flyTo([44.937, -93.17],16);
-      }
-      else{
-        var restposit = this.props.restaurantsfromRedux[index].coordinate
-        var restName = this.props.restaurantsfromRedux[index].name
+
+        this.map.flyTo([44.937, -93.17], 16);
+      } else {
+        var restposit = this.props.restaurantsfromRedux[index].coordinate;
+        var restName = this.props.restaurantsfromRedux[index].name;
         this.map.restpopup = L.popup()
-        .setLatLng(restposit)
-        .setContent(restName)
-        .openOn(this.map);
+          .setLatLng(restposit)
+          .setContent(restName)
+          .openOn(this.map);
         this.map.flyTo(restposit, 18);
       }
     }
   }
 
-
-
-
-
   render() {
     return <div id="map" style={style}></div>;
   }
 }
-
-
-
 
 export default connect(mapStateToProps)(Map);
