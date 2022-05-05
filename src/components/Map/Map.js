@@ -23,6 +23,7 @@ import weyerhaeuser_memorial_chapel from "../../resource/images/buildingPics/wey
 import humanity from "../../resource/images/buildingPics/humanity.jpg";
 import markim_hall from "../../resource/images/buildingPics/markim_hall.jpg";
 import restaurants from "../../resource/json/restaurant";
+import restaurantIcon from "../../resource/images/restaurant_icon.svg";
 
 var buildingName;
 var image;
@@ -54,6 +55,18 @@ var defaultStyle = {
   fillColor: "#2262CC",
 };
 
+
+var LeafIcon = L.Icon.extend({
+  options: {
+     iconSize: [25, 25]
+  }
+});
+
+var foodIcon = new LeafIcon({
+  iconUrl: restaurantIcon,
+})
+
+
 var addResMarker = function (map) {
   if (map.group !== undefined) {
     map.removeLayer(map.group);
@@ -64,6 +77,7 @@ var addResMarker = function (map) {
     var name = restaurants[i].name;
     markerArray.push(
       L.marker(posit, {
+        icon: foodIcon,
         riseOnHover: true,
       }).bindPopup(name)
     );
