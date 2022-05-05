@@ -27,6 +27,7 @@ import restaurants from "../../resource/json/restaurant";
 var buildingName;
 var image;
 var description;
+var websties;
 
 const mapStateToProps = (state) => ({
   buildingsfromRedux: state.buildings,
@@ -191,6 +192,7 @@ class Map extends React.Component {
         buildingName = buildingInfo[currentBuildingIndex].name;
         image = assignImage(buildingName);
         description = buildingInfo[currentBuildingIndex].descrip;
+        websties = buildingInfo[currentBuildingIndex].roomWeb;
         if (this.map.geometries !== undefined) {
           this.map.removeLayer(this.map.geometries);
         }
@@ -210,6 +212,7 @@ class Map extends React.Component {
                 image={image}
                 description={description}
                 buildingName={buildingName}
+                websites = {websties}
               />
             )
           )
