@@ -12,8 +12,8 @@ function CustomPopup(props) {
     height: 150,
   };
 
-  var websites = props.websites
-  var mainWeb = props.mainWeb
+  var websites = props.websites;
+  var mainWeb = props.mainWeb;
   return (
     <Card className="Card">
       <Box>
@@ -32,36 +32,30 @@ function CustomPopup(props) {
             {props.description}
           </Typography>
 
-          
-          {
-          ((mainWeb!="") ||  (websites != undefined && websites.length!=0)) && 
-          <Typography variant="h6">Some Useful Links:</Typography>}
-
+          {(mainWeb !== "" ||
+            (websites !== undefined && websites.length !== 0)) && (
+            <Typography variant="h6">Some Useful Links:</Typography>
+          )}
 
           <Grid container spacing={2}>
-            {
-              mainWeb!="" &&
+            {mainWeb !== "" && (
               <Grid item>
-                <Link href= {mainWeb} target="_blank">
+                <Link href={mainWeb} target="_blank">
                   {props.buildingName + " website"}
                 </Link>
               </Grid>
+            )}
 
-            }
-            
-            {websites != undefined &&
-              websites.map((website)=>{
-                return <Grid item>
-                <Link href= {website[1]} target="_blank">
-                  {website[0]}
-                </Link>
-              </Grid>
-
-
-              }
-              )
-            }
-            
+            {websites !== undefined &&
+              websites.map((website) => {
+                return (
+                  <Grid item>
+                    <Link href={website[1]} target="_blank">
+                      {website[0]}
+                    </Link>
+                  </Grid>
+                );
+              })}
           </Grid>
         </CardContent>
       </Box>
