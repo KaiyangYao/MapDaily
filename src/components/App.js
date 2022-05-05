@@ -1,3 +1,5 @@
+import React from "react";
+import { Navigate } from "react-router";
 import { Container, Row, Col } from "react-bootstrap";
 import { Outlet, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
@@ -11,6 +13,7 @@ function App(props) {
   return (
     <Routes>
       <Route element={<Main />}>
+        <Route path="/" element={<Navigate to="/events" />} />
         <Route path="/events" element={<EventMain className="tabpicker" />} />
         <Route path="/restaurants" element={<AllRestaurants />} />
       </Route>
@@ -22,16 +25,16 @@ function Main(props) {
   return (
     <div>
       <NavBar />
-    <Container fluid>
-      <Row className="main_row">
-        <Col className="main_col_left">
-          <Map />
-        </Col>
-        <Col className="main_col_right">
-          <Outlet />
-        </Col>
-      </Row>
-    </Container>
+      <Container fluid>
+        <Row className="main_row">
+          <Col className="main_col_left">
+            <Map />
+          </Col>
+          <Col className="main_col_right">
+            <Outlet />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
