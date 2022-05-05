@@ -32,13 +32,13 @@ class AllEvents extends Component {
     });
 
     let eventCardsOnCampus = eventsToday.map((e) => {
-      if (! (e.location.includes("MN") && !e.location.includes("Home")) && !(e.location === "Remote")) {
+      if (! ((e.location.includes("MN") && !e.location.includes("Home"))) && !(e.location === "Remote")) {
         return <SingleEvent event={e} isOffCampus={false} />;
       }
     });
 
     let eventCardsOffCampus = eventsToday.map((e) => {
-      if ((e.location.includes("MN") && (!e.location.includes("Home")) || e.location === "Remote")) {
+      if ( (e.location.includes("MN") && (!e.location.includes("Home")) || (e.location === "Remote"))) {
         return <SingleEvent event={e} isOffCampus={true} />;
       }
     });
@@ -55,7 +55,7 @@ class AllEvents extends Component {
         {this.state.isLoadingEvents && (
           <h1 className="events_warning">Loading...</h1>
         )}
-        {!this.state.isLoadingEvents && eventsToday.length == 0 && (
+        {!this.state.isLoadingEvents && eventsToday.length === 0 && (
           <h1 className="events_warning">No events today</h1>
         )}
         <Masonry
