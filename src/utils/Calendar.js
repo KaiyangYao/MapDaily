@@ -1,6 +1,3 @@
-import { CommitSharp } from "@mui/icons-material";
-// import { events } from "../resource/event";
-
 const ICAL = require("ical.js");
 let summaryList = null;
 
@@ -8,16 +5,18 @@ function parseEvents(icsString) {
   var jcalData = ICAL.parse(icsString);
   var comp = new ICAL.Component(jcalData);
   var allVEvents = comp.getAllSubcomponents("vevent");
+  var remoteName = ["", "Online", "online", "Zoom", "zoom"];
 
   summaryList = allVEvents.map((event) => {
     var location = event.getFirstPropertyValue("location");
     
     return {
+      uid: event.getFirstPropertyValue("UID"),
       summary: event.getFirstPropertyValue("summary"),
       date: event.getFirstPropertyValue("dtstart").toJSDate().toDateString(),
-      location: location === "" || location === "Online" ? "Remote" : location,
+      location: remoteName.includes(location) ? "Remote" : location,
       description: event.getFirstPropertyValue("description"),
-      url: event.getFirstPropertyValue("url"),
+      url: event.getFirstPropertyValue("url")
     };
   });
 }
