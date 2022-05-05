@@ -14,7 +14,6 @@ function CustomPopup(props) {
 
   var websites = props.websites
   var mainWeb = props.mainWeb
-
   return (
     <Card className="Card">
       <Box>
@@ -33,11 +32,15 @@ function CustomPopup(props) {
             {props.description}
           </Typography>
 
-          <Typography variant="h6">Some Useful Links:</Typography>
+          
+          {
+          ((mainWeb!="") ||  (websites != undefined && websites.length!=0)) && 
+          <Typography variant="h6">Some Useful Links:</Typography>}
+
 
           <Grid container spacing={2}>
             {
-              mainWeb!= undefined &&
+              mainWeb!="" &&
               <Grid item>
                 <Link href= {mainWeb} target="_blank">
                   {props.buildingName + " website"}
@@ -53,6 +56,7 @@ function CustomPopup(props) {
                   {website[0]}
                 </Link>
               </Grid>
+
 
               }
               )
