@@ -58,3 +58,4 @@ The [proxy server](https://github.com/KaiyangYao/MapDaily-Calendar-Server) is de
 
 # Known issues
 1. The responsive design is not working perfectly. If you shrink the width of the page and then return back, the layout of the event cards will be strangly changed.
+2. When in the restaurants page, refreshing page will let all map markers disappear. Go to the events page and then go back will fix the issue. We are working on fixing this bug.
