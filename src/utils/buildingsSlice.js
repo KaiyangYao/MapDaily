@@ -17,7 +17,7 @@ export const buildingsSlice = createSlice({
         return state;
       } else {
         for (let i = 0; i < state.features.length; i++) {
-          if (i == action.payload) {
+          if (i === action.payload) {
             state.features[action.payload].properties.show_on_map = true;
             state.currentBuildingIndex = action.payload;
           } else {

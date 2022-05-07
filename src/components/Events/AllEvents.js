@@ -36,8 +36,9 @@ class AllEvents extends Component {
         !(e.location.includes("MN") && !e.location.includes("Home")) &&
         !(e.location === "Remote")
       ) {
-        return <SingleEvent event={e} isOffCampus={false} key={e.uid} />;
+        return <SingleEvent event={e} isOffCampus={false} />;
       }
+      return null;
     });
 
     let eventCardsOffCampus = eventsToday.map((e) => {
@@ -45,8 +46,9 @@ class AllEvents extends Component {
         (e.location.includes("MN") && !e.location.includes("Home")) ||
         e.location === "Remote"
       ) {
-        return <SingleEvent event={e} isOffCampus={true} key={e.uid} />;
+        return <SingleEvent event={e} isOffCampus={true} />;
       }
+      return null;
     });
 
     const breakpoints = {

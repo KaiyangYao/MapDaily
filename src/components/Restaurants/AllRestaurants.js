@@ -4,10 +4,6 @@ import SingleRestaurant from "./SingleRestaurant";
 import "../../css/Restaurants/Restaurant.scss";
 
 class AllRestaurants extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     let restaurantCards = restaurants.map((e) => {
       return <SingleRestaurant rest={e} />;
