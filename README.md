@@ -28,6 +28,8 @@ In the restaurants panel, a list of restaurants near campus with walking distanc
 - [Bootstrap](https://getbootstrap.com)
 - [Material-UI](https://mui.com)
 
+The [proxy server](https://github.com/KaiyangYao/MapDaily-Calendar-Server) is deployed on the [Heroku](https://www.heroku.com) Cloud Platform.
+
 # Getting Started
 
 ### Prerequisites
@@ -46,8 +48,13 @@ In the restaurants panel, a list of restaurants near campus with walking distanc
 1. Run `npm start` from the project root to run the app
 2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
+
 # Future Work
 
 1. Get in touch with the school's ITS office to make the calendar data public
 2. Currently not all the events are submitted to the college calendar. We will try to talk to each department and let them submit the event
 3. Update more features besides events and restaurants
+
+
+# Known issues
+1. The responsive design is not working perfectly. If you shrink the width of the page and then return back, the layout of the event cards will be strangly changed.
