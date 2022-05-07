@@ -10,17 +10,16 @@ import { useNavigate } from "react-router-dom";
 import "../../css/NavBar/Dashboard.css";
 import { useDispatch } from "react-redux";
 import { resetBuilding } from "../../utils/buildingsSlice";
-import { resetRestaurant } from "../../utils/restaurantSlice"
-
+import { resetRestaurant } from "../../utils/restaurantSlice";
 
 const styles = (theme) => ({
   title: {
     flexGrow: 1,
   },
   appBar: {
-    background : '#01426a',
+    background: "#01426a",
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -28,7 +27,6 @@ const styles = (theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    // padding: theme.spacing.unit * 3,
     height: "100vh",
     overflow: "auto",
   },
@@ -37,7 +35,7 @@ const styles = (theme) => ({
   },
   chartContainer: {
     marginLeft: -30,
-  }
+  },
 });
 
 function NavBar(props) {
@@ -65,15 +63,15 @@ function NavBar(props) {
             noWrap
             className={classes.toolbarTitle}
           ></Typography>
-          <Button onClick={navigateToEvents} className="nav_button">Events</Button>
-          <Button onClick={navigateToRestaurants} className="nav_button"> Restaurants</Button>
+          <Button onClick={navigateToEvents} className="nav_button">
+            Events
+          </Button>
+          <Button onClick={navigateToRestaurants} className="nav_button">
+            {" "}
+            Restaurants
+          </Button>
         </Toolbar>
       </AppBar>
-      {/* <main className={classes.content}>
-        <Typography component="div" className={classes.chartContainer}>
-          <Map />
-        </Typography>
-      </main> */}
     </div>
   );
 }

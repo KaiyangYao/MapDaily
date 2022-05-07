@@ -2,8 +2,10 @@ import { useDispatch } from "react-redux";
 import { changeBuildings } from "../../utils/buildingsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/Events/SingleEvent.scss";
-
-function SingleEventV2(props) {
+/**
+   @todo: refactor this file!
+**/
+function SingleEvent(props) {
   var randomColor = require("randomcolor");
   var onCampuscolor = randomColor();
   var offCampuscolor = "#033555";
@@ -27,6 +29,8 @@ function SingleEventV2(props) {
     "softball",
     "markim hall",
   ];
+
+  // We will pull out this function and do the refactor later
   const findIndex = () => {
     var location = event.location.toLowerCase();
     var index = undefined;
@@ -82,10 +86,9 @@ function SingleEventV2(props) {
   const index = findIndex();
 
   const handleOnClick = () => {
-    if(!props.isOffCampus){
+    if (!props.isOffCampus) {
       dispatch(changeBuildings(index));
-    }
-    else return
+    } else return;
   };
 
   const handleExplore = () => {
@@ -93,13 +96,22 @@ function SingleEventV2(props) {
   };
 
   return (
-    <div className={ props.isOffCampus ? "eventItem__hidden" : "eventItem__shown"}  onClick = {handleOnClick}>
+    <div
+      className={props.isOffCampus ? "eventItem__hidden" : "eventItem__shown"}
+      onClick={handleOnClick}
+    >
       <div className="eventCard">
         {!props.isOffCampus && (
-          <div className="eventCard__top" style={{ backgroundColor: onCampuscolor }} />
+          <div
+            className="eventCard__top"
+            style={{ backgroundColor: onCampuscolor }}
+          />
         )}
         {props.isOffCampus && (
-          <div className="eventCard__top" style={{ backgroundColor: offCampuscolor}}>
+          <div
+            className="eventCard__top"
+            style={{ backgroundColor: offCampuscolor }}
+          >
             NOT ON CAMPUS
           </div>
         )}
@@ -117,4 +129,4 @@ function SingleEventV2(props) {
   );
 }
 
-export default SingleEventV2;
+export default SingleEvent;

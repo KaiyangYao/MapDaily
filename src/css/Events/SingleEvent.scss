@@ -25,14 +25,14 @@ body {
 }
 
 .eventItem {
-    &__shown{
+    &__shown {
         background-color: #fff;
         border-radius: .4rem;
         overflow: hidden;
         box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
         cursor: pointer;
         transition: $transition;
-    
+
         &:hover {
             transform: translateY(-.5%);
             box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
@@ -40,7 +40,7 @@ body {
     }
 
 
-    &__hidden{
+    &__hidden {
         background-color: #fff;
         border-radius: .4rem;
         overflow: hidden;

@@ -16,10 +16,7 @@ function DateSelector(props) {
     <div>
       <div className="input-container">
         <label>Select a date</label>
-        <DatePicker
-          selected={eventDate}
-          onSelect={handleEventDateSelect}
-        />
+        <DatePicker selected={eventDate} onSelect={handleEventDateSelect} />
       </div>
     </div>
   );

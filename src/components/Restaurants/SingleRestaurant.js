@@ -13,14 +13,14 @@ function SingleRestaurant(props) {
   };
 
   const handleCardOnClick = () => {
-    dispatch(changeHilightOnMap(props.rest.id-1))
+    dispatch(changeHilightOnMap(props.rest.id - 1));
   };
 
   return (
     <div className="rest_card" onClick={handleCardOnClick}>
-      <div className="rest_content" >
+      <div className="rest_content">
         <h2 className="rest_title">{rest.name}</h2>
-        <p className="rest_info" >{rest.info} </p>
+        <p className="rest_info">{rest.info} </p>
         <div className="rest_btn_group">
           <button onClick={handleOnClick} className="rest_btn">
             GO TO WEBSITE

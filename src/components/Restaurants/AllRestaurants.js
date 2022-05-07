@@ -9,16 +9,11 @@ class AllRestaurants extends Component {
   }
 
   render() {
-      let restaurantCards = restaurants.map((e) => {
-        return <SingleRestaurant rest={e} />;
-      });
+    let restaurantCards = restaurants.map((e) => {
+      return <SingleRestaurant rest={e} />;
+    });
 
-
-    return (
-      <main className="page-content">
-        {restaurantCards}
-      </main>
-    );
+    return <main className="page-content">{restaurantCards}</main>;
   }
 }
 

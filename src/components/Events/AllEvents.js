@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import fetchEvents from "../../utils/Calendar";
+import fetchEvents from "../../utils/calendar";
 import SingleEvent from "./SingleEvent";
 import Masonry from "react-masonry-css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,14 +32,20 @@ class AllEvents extends Component {
     });
 
     let eventCardsOnCampus = eventsToday.map((e) => {
-      if (! ((e.location.includes("MN") && !e.location.includes("Home"))) && !(e.location === "Remote")) {
-        return <SingleEvent event={e} isOffCampus={false} key={e.uid}/>;
+      if (
+        !(e.location.includes("MN") && !e.location.includes("Home")) &&
+        !(e.location === "Remote")
+      ) {
+        return <SingleEvent event={e} isOffCampus={false} key={e.uid} />;
       }
     });
 
     let eventCardsOffCampus = eventsToday.map((e) => {
-      if ( (e.location.includes("MN") && (!e.location.includes("Home")) || (e.location === "Remote"))) {
-        return <SingleEvent event={e} isOffCampus={true} key={e.uid}/>;
+      if (
+        (e.location.includes("MN") && !e.location.includes("Home")) ||
+        e.location === "Remote"
+      ) {
+        return <SingleEvent event={e} isOffCampus={true} key={e.uid} />;
       }
     });
 

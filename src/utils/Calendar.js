@@ -9,14 +9,14 @@ function parseEvents(icsString) {
 
   summaryList = allVEvents.map((event) => {
     var location = event.getFirstPropertyValue("location");
-    
+
     return {
       uid: event.getFirstPropertyValue("UID"),
       summary: event.getFirstPropertyValue("summary"),
       date: event.getFirstPropertyValue("dtstart").toJSDate().toDateString(),
       location: remoteName.includes(location) ? "Remote" : location,
       description: event.getFirstPropertyValue("description"),
-      url: event.getFirstPropertyValue("url")
+      url: event.getFirstPropertyValue("url"),
     };
   });
 }

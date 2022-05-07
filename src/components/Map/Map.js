@@ -7,7 +7,6 @@ import buildings from "../../resource/json/building";
 import { connect } from "react-redux";
 import ReactDOMServer from "react-dom/server";
 import CustomPopup from "./CustomPopup";
-import "../../css/Map/map.css";
 import buildingInfo from "../../resource/json/buildingInfo";
 import library from "../../resource/images/buildingPics/library.jpg";
 import campus_center from "../../resource/images/buildingPics/campus_center.jpg";
@@ -24,6 +23,11 @@ import humanity from "../../resource/images/buildingPics/humanity.jpg";
 import markim_hall from "../../resource/images/buildingPics/markim_hall.jpg";
 import restaurants from "../../resource/json/restaurant";
 import restaurantIcon from "../../resource/images/restaurant_icon.svg";
+import "../../css/Map/map.css";
+
+/**
+   @todo: refactor this file!
+**/
 
 var buildingName;
 var image;
@@ -56,17 +60,15 @@ var defaultStyle = {
   fillColor: "#2262CC",
 };
 
-
 var LeafIcon = L.Icon.extend({
   options: {
-     iconSize: [25, 25]
-  }
+    iconSize: [25, 25],
+  },
 });
 
 var foodIcon = new LeafIcon({
   iconUrl: restaurantIcon,
-})
-
+});
 
 var addResMarker = function (map) {
   if (map.group !== undefined) {
@@ -208,7 +210,7 @@ class Map extends React.Component {
         image = assignImage(buildingName);
         description = buildingInfo[currentBuildingIndex].descrip;
         websites = buildingInfo[currentBuildingIndex].roomWeb;
-        mainWeb =  buildingInfo[currentBuildingIndex].website;
+        mainWeb = buildingInfo[currentBuildingIndex].website;
 
         if (this.map.geometries !== undefined) {
           this.map.removeLayer(this.map.geometries);
@@ -229,8 +231,8 @@ class Map extends React.Component {
                 image={image}
                 description={description}
                 buildingName={buildingName}
-                websites = {websites}
-                mainWeb = {mainWeb}
+                websites={websites}
+                mainWeb={mainWeb}
               />
             )
           )
