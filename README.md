@@ -6,6 +6,9 @@
 
 This is a web application mainly for current student. It allows students to explore what events are happening on campus. It also itegrated a list of good dining places around campus with walking distance.
 
+![Events page demo](src/resource/images/demo/01_Events.png)
+![Restanrants page demo](src/resource/images/demo/02_Restaurants.png)
+
 ### Campus Events
 
 In the events panel, once selected a date, a list of event cards will show up, listing the basic info of each event and the hyperlinks to the event page. If an event is happening in-person at macalester, the specific building related will be highlighted on the map once the event card is clicked.
@@ -56,6 +59,6 @@ The [proxy server](https://github.com/KaiyangYao/MapDaily-Calendar-Server) is de
 3. Update more features besides events and restaurants
 
 
-# Known issues
+# Known Issues
 1. The responsive design is not working perfectly. If you shrink the width of the page and then return back, the layout of the event cards will be strangly changed.
 2. When in the restaurants page, refreshing page will let all map markers disappear. Go to the events page and then go back will fix the issue. We are working on fixing this bug.
